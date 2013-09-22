@@ -1,0 +1,245 @@
+<html>
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  	
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+	google.load("visualization", "1", {packages:["corechart","geochart"]});
+	google.setOnLoadCallback(drawChart);
+      
+	function drawEmployedTrendPercentageChart() {
+		var data = google.visualization.arrayToDataTable([
+					['Year', 'Percent'],
+					['2546', 96.9608985],
+					['2547', 97.2311659],
+					['2548', 97.5788513],
+					['2549', 97.9591125],
+					['2550', 98.1253685],
+					['2551', 98.1862925],
+					['2552', 98.1251729],
+					['2553', 98.431458],
+					['2554', 98.8262533],
+					['2555', 98.8106211],
+		]);
+		
+		var options = {
+			title: 'Employed rate'
+		};
+
+		var chart = new google.visualization.LineChart(document.getElementById('employed_trend'));
+		chart.draw(data, options);
+	}
+	
+	function drawUnemployedTrendPercentageChart() {
+		var data = google.visualization.arrayToDataTable([
+					['Year', 'Percent'],
+					['2546', 2.160917048],
+					['2547', 2.069441485],
+					['2548', 1.83487237],
+					['2549', 1.514537691],
+					['2550', 1.376415143],
+					['2551', 1.384548131],
+					['2552', 1.489419888],
+					['2553', 1.040748234],
+					['2554', 0.67915991],
+					['2555', 0.657468476],
+		]);
+		
+		var options = {
+			title: 'Unemployed rate'
+		};
+
+		var chart = new google.visualization.LineChart(document.getElementById('unemployed_trend'));
+		chart.draw(data, options);
+	}
+	
+	function drawSeasonInactiveTrendPercentageChart() {
+		var data = google.visualization.arrayToDataTable([
+					['Year', 'Percent'],
+					['2546', 0.87818376],
+					['2547', 0.699391925],
+					['2548', 0.586277696],
+					['2549', 0.526348452],
+					['2550', 0.498216399],
+					['2551', 0.429158727],
+					['2552', 0.385406588],
+					['2553', 0.527794451],
+					['2554', 0.494586839],
+					['2555', 0.531910378],
+		]);
+		
+		var options = {
+			title: 'Seasonally inactive labor force'
+		};
+
+		var chart = new google.visualization.LineChart(document.getElementById('season_inactive_trend'));
+		chart.draw(data, options);
+	}
+      
+	function drawMaleFemaleQuantityChart() {
+		var data = google.visualization.arrayToDataTable([
+					['Year', 'Male',      'Female'],
+					['2546', 18803791.75, 15037231.25],
+					['2547', 19338565,    15390246.25],
+					['2548', 19334658.5,  15922514.25],
+					['2549', 19416435.5,  16269094],
+					['2550', 19695739.25, 16553714.75],
+					['2551', 20092424,    16924188],
+					['2552', 20489253.25, 17217068],
+					['2553', 20652483.195375, 17384858.856125],
+					['2554', 20814282.4875, 17650384.34],
+					['2555', 21129083.6325, 17810046.35]
+		]);
+
+		var options = {
+			title: 'Male VS Female'
+		};
+
+		var chart = new google.visualization.LineChart(document.getElementById('male_female_quan_chart'));
+		chart.draw(data, options);
+	}
+
+	function drawMaleFemaleRatioChart() {
+		var data = google.visualization.arrayToDataTable([
+					['Year', 'Male',  'Female'],
+					['2546', 0.78582, 0.61667],
+					['2547', 0.79129, 0.61825],
+					['2548', 0.79162, 0.62706],
+					['2549', 0.79301, 0.62967],
+					['2550', 0.79563, 0.62967],
+					['2551', 0.79740, 0.63374],
+					['2552', 0.79810, 0.63428],
+					['2553', 0.79472, 0.63276],
+					['2554', 0.79315, 0.63579],
+					['2555', 0.79792, 0.63531]
+		]);
+
+		var options = {
+			title: 'Male VS Female'
+		};
+
+		var chart = new google.visualization.LineChart(document.getElementById('male_female_ratio_chart'));
+		chart.draw(data, options);
+	}
+	
+	function drawUnemployedByDegreeChart(year) {
+		var unemploy_data = {};
+		unemploy_data['2546'] = new Array(41.7, 19.6, 11.8, 4.4, 7.3, 15.2);
+		unemploy_data['2547'] = new Array(39.9, 19.7, 13.2, 4, 7.6, 15.6);
+		unemploy_data['2548'] = new Array(38.7, 21.9, 11.4, 4.6, 7.9, 15.5);
+		unemploy_data['2549'] = new Array(36.6, 21.6, 13.1, 4.3, 6.2, 18.2);
+		unemploy_data['2550'] = new Array(32.8, 22.1, 13.2, 4.6, 8.4, 18.9);
+		unemploy_data['2551'] = new Array(31.4, 23.8, 12.7, 5.6, 8.4, 18.2);
+		unemploy_data['2552'] = new Array(30, 23.3, 12.5, 5.9, 9.2, 19.1);
+		unemploy_data['2553'] = new Array(27, 22.6, 12.1, 5.3, 8.4, 24.5);
+		unemploy_data['2554'] = new Array(26.7, 21.8, 12.7, 5.2, 9.1, 24.5);
+		unemploy_data['2555'] = new Array(22, 22.8, 14.9, 5.1, 10, 25.2);
+
+		var data = google.visualization.arrayToDataTable([
+					['วุฒิการศึกษา'        , 'Percent',],
+					['ประถมศึกษาและต่ำกว่า' , unemploy_data[year][0]],
+					['มัธยมต้น'           , unemploy_data[year][1]],
+					['มัธยมปลาย (สายสามัญ)', unemploy_data[year][2]],
+					['อาชีวศึกษา'          , unemploy_data[year][3]],
+					['วิชาชีพชั้นสูง'         , unemploy_data[year][4]],
+					['อุดมศึกษา'           , unemploy_data[year][5]]
+		]);
+		
+		var options = {
+			//title: 'Company Performance',
+			//vAxis: {title: 'Year',  titleTextStyle: {color: 'red'}}
+        };
+
+        var chart = new google.visualization.BarChart(document.getElementById('unemploy_by_degree_chart'));
+        chart.draw(data, options);
+
+	}
+	
+	function drawUnemployedByDegreeTrendChart() {
+		var data = google.visualization.arrayToDataTable([
+					['Year', 'ประถมศึกษาและต่ำกว่า', 'มัธยมต้น', 'มัธยมปลาย (สายสามัญ)', 'อาชีวศึกษา', 'วิชาชีพชั้นสูง', 'อุดมศึกษา'],
+					['2546', 41.7, 19.6, 11.8, 4.4, 7.3, 15.2],
+					['2547', 39.9, 19.7, 13.2, 4, 7.6, 15.6],
+					['2548', 38.7, 21.9, 11.4, 4.6, 7.9, 15.5],
+					['2549', 36.6, 21.6, 13.1, 4.3, 6.2, 18.2],
+					['2550', 32.8, 22.1, 13.2, 4.6, 8.4, 18.9],
+					['2551', 31.4, 23.8, 12.7, 5.6, 8.4, 18.2],
+					['2552', 30, 23.3, 12.5, 5.9, 9.2, 19.1],
+					['2553', 27, 22.6, 12.1, 5.3, 8.4, 24.5],
+					['2554', 26.7, 21.8, 12.7, 5.2, 9.1, 24.5],
+					['2555', 22, 22.8, 14.9, 5.1, 10, 25.2]
+		]);
+		
+		var options = {
+			title: 'Unemployed by degree'
+		};
+
+		var chart = new google.visualization.LineChart(document.getElementById('unemploy_by_degree_trend'));
+		chart.draw(data, options);
+	}
+	
+	function drawUnemployedMap() {
+		var data = google.visualization.arrayToDataTable([
+					['City', 'Population'],
+					['Bangkok', 40],
+					['Trang', 20]
+		]);
+
+		var options = {
+			region: 'TH'
+		};
+
+        var chart = new google.visualization.GeoChart(document.getElementById('unemploy_map'));
+        chart.draw(data, options);
+	}
+
+	function drawChart() {
+		drawEmployedTrendPercentageChart();
+		drawUnemployedTrendPercentageChart();
+		drawSeasonInactiveTrendPercentageChart();
+		
+		drawMaleFemaleQuantityChart();
+		drawMaleFemaleRatioChart();
+		
+		drawUnemployedByDegreeChart('2555');
+		drawUnemployedByDegreeTrendChart();
+		
+		// By year
+		drawUnemployedMap();
+	}
+</script>
+
+</head>
+<body>
+  	
+<h2>สถานการณ์ปัจุบัน</h2>
+
+<h2>แนวโน้มการว่างงาน</h2>
+  	
+Employed
+<div id="employed_trend" style="width: 450px; height: 250px;"></div>
+  	
+Unemployed
+<div id="unemployed_trend" style="width: 450px; height:250px;"></div>
+  	 
+Seasonally inactive labor force
+<div id="season_inactive_trend" style="width: 450px; height:250px;"></div>
+  	
+<h2>จำนวนผู้มีงานทำแบ่งตามเพศ</h2>
+<div id="male_female_quan_chart" style="width: 900px; height: 500px;"></div>
+
+<h2></h2>
+<div id="male_female_ratio_chart" style="width: 900px; height: 500px;"></div>
+
+<h2>ผู้ว่างงานแบ่งตามวุฒิการศึกษาสูงสุด</h2>
+<div id="unemploy_by_degree_chart" style="width: 900px; height: 500px;"></div>
+<div id="unemploy_by_degree_trend" style="width: 900px; height: 500px;"></div>
+
+
+<div id="unemploy_map" style="width: 500px; height: 600px;"></div>
+
+
+</body>
+</html>
+
