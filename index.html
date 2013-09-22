@@ -4,10 +4,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   	
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript" src="http://api.simile-widgets.org/timeplot/1.1/timeplot-api.js"></script>
+
 <script type="text/javascript">
 	google.load("visualization", "1", {packages:["corechart","geochart"]});
 	google.setOnLoadCallback(drawChart);
-      
+	google.setOnResizeCallback(sds);
+
 	function drawEmployedTrendPercentageChart() {
 		var data = google.visualization.arrayToDataTable([
 					['Year', 'Percent'],
@@ -211,10 +214,54 @@
 		// By year
 		drawUnemployedMap();
 	}
+	
+	/* Simile Timeplot function */
+	var timeplot;
+	function initTimeplotOnLoad() {
+		var unemployrateSource = new Timeplot.DefaultEventSource();
+		
+		var timeGeometry = new Timeplot.DefaultTimeGeometry({
+			gridColor: new Timeplot.Color("#000000"),
+			axisLabelsPlacement: "top"
+		});
+
+		var valueGeometry = new Timeplot.DefaultValueGeometry({
+			gridColor: "#000000",
+			axisLabelsPlacement: "left",
+			min: 0,
+			max: 1
+		});
+		
+		var plotInfo = [
+			Timeplot.createPlotInfo({
+				id: "Unemployed Rate",
+				dataSource: new Timeplot.ColumnSource(unemployrateSource,1),
+				timeGeometry: timeGeometry,
+				valueGeometry: valueGeometry,
+				lineColor: "#ff0000",
+				fillColor: "#cc8080",
+				showValues: true
+    })
+		];
+		
+		timeplot = Timeplot.create(document.getElementById("unemploy_timeplot"), plotInfo);
+		timeplot.loadText("unemployrate_2004-2012.txt", ",", unemployrateSource);
+	}
+	
+	var resizeTimerID = null;
+	function initTimeplotOnResize() {
+		if (resizeTimerID == null) {
+			resizeTimerID = window.setTimeout(function() {
+				resizeTimerID = null;
+				timeplot.repaint();
+ 			}, 100);
+		}
+	}
 </script>
 
 </head>
-<body>
+
+<body onload="initTimeplotOnLoad();" onresize="initTimeplotOnResize();">
   	
 <h2>สถานการณ์ปัจุบัน</h2>
 
@@ -242,6 +289,7 @@ Seasonally inactive labor force
 
 <div id="unemploy_map" style="width: 500px; height: 600px;"></div>
 
+<div id="unemploy_timeplot" style="height: 150px;"></div>
 
 </body>
 </html>
