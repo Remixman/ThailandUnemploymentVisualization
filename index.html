@@ -183,11 +183,14 @@
 		var data = google.visualization.arrayToDataTable([
 					['City', 'Population'],
 					['Bangkok', 40],
-					['Trang', 20]
+					['Trang', 20],
+					['Phitsanulok', 50]
 		]);
 
 		var options = {
-			region: 'TH'
+			region: 'TH',
+			displayMode: 'region',
+			resolution: 'provinces'
 		};
 
         var chart = new google.visualization.GeoChart(document.getElementById('unemploy_map'));
