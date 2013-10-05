@@ -2,9 +2,17 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title></title>
+
+<link type="text/css" rel="stylesheet" href="css/base.css" />
+<link type="text/css" rel="stylesheet" href="css/Icicle.css" />
+<link type="text/css" rel="stylesheet" href="css/style.css" />
   	
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript" src="http://api.simile-widgets.org/timeplot/1.1/timeplot-api.js"></script>
+<script type="text/javascript" src="js/jit.js"></script>
+<script type="text/javascript" src="js/icicle.js"></script>
 
 <script type="text/javascript">
 	google.load("visualization", "1", {packages:["corechart","geochart"]});
@@ -240,7 +248,7 @@
 				lineColor: "#ff0000",
 				fillColor: "#cc8080",
 				showValues: true
-    })
+		})
 		];
 		
 		timeplot = Timeplot.create(document.getElementById("unemploy_timeplot"), plotInfo);
@@ -256,13 +264,24 @@
  			}, 100);
 		}
 	}
+	
+	function initGraph() {
+		init();
+		alert("After init");
+		initTimeplotOnLoad();
+	}
+	
+	function resizeGraph() {
+		initTimeplotOnResize();
+	}
 </script>
 
 </head>
 
-<body onload="initTimeplotOnLoad();" onresize="initTimeplotOnResize();">
+<body onload="initGraph();" onresize="resizeGraph();">
   	
 <h2>สถานการณ์ปัจุบัน</h2>
+<div id="infovis"></div>
 
 <h2>แนวโน้มการว่างงาน</h2>
   	
