@@ -7,7 +7,7 @@
 
 <link type="text/css" rel="stylesheet" href="css/base.css" />
 <link type="text/css" rel="stylesheet" href="css/Icicle.css" />
-<link type="text/css" rel="stylesheet" href="css/style.css" />
+<link type="text/css" rel="stylesheet" href="css/infostyle.css" />
   	
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript" src="http://api.simile-widgets.org/timeplot/1.1/timeplot-api.js"></script>
@@ -88,6 +88,10 @@
 	}
       
 	function drawMaleFemaleQuantityChart() {
+		
+		// Line Chart API Document
+		// https://google-developers.appspot.com/chart/interactive/docs/gallery/linechart
+		
 		var data = google.visualization.arrayToDataTable([
 					['Year', 'Male',      'Female'],
 					['2546', 18803791.75, 15037231.25],
@@ -103,7 +107,23 @@
 		]);
 
 		var options = {
-			title: 'Male VS Female'
+			title: 'Male VS Female',
+			backgroundColor: '#aaaaaa',
+			vAxis: {
+				title: 'จำนวน',
+				minValue: 10000000,
+				maxValue: 24000000,
+			},
+			hAxis: {
+				title: 'ปี',
+				titleTextStyle: {
+					color: 'black',
+  					//fontName: <string>,
+					//fontSize: <number>,
+					//bold: <boolean>,
+					italic: false 
+				}
+			}
 		};
 
 		var chart = new google.visualization.LineChart(document.getElementById('male_female_quan_chart'));
@@ -267,7 +287,6 @@
 	
 	function initGraph() {
 		init();
-		alert("After init");
 		initTimeplotOnLoad();
 	}
 	
@@ -280,25 +299,37 @@
 
 <body onload="initGraph();" onresize="resizeGraph();">
   	
+<div id="ddddd"> </div>
+  	
 <h2>สถานการณ์ปัจุบัน</h2>
 <div id="infovis"></div>
 
 <h2>แนวโน้มการว่างงาน</h2>
   	
-Employed
-<div id="employed_trend" style="width: 450px; height: 250px;"></div>
-  	
-Unemployed
-<div id="unemployed_trend" style="width: 450px; height:250px;"></div>
+<div class="trend_box">
+	ผู้มีงานทำ
+	<div id="employed_trend" style="width: 450px; height: 250px;"> </div>
+</div>
+
+<div class="trend_box">
+	ผู้ว่างงาน
+	<div id="unemployed_trend" style="width: 450px; height:250px;"> </div>
+</div>
   	 
-Seasonally inactive labor force
-<div id="season_inactive_trend" style="width: 450px; height:250px;"></div>
+<div class="trend_box">
+	ผู้รอฤดูกาล
+	<div id="season_inactive_trend" style="width: 450px; height:250px;"> </div>
+</div>
   	
 <h2>จำนวนผู้มีงานทำแบ่งตามเพศ</h2>
-<div id="male_female_quan_chart" style="width: 900px; height: 500px;"></div>
 
-<h2></h2>
-<div id="male_female_ratio_chart" style="width: 900px; height: 500px;"></div>
+<div class="trend_box">
+	<div id="male_female_quan_chart" style="width: 500px; height: 280px;"> </div>
+</div>
+
+<div class="trend_box">
+	<div id="male_female_ratio_chart" style="width: 500px; height: 280px;"> </div>
+</div>
 
 <h2>ผู้ว่างงานแบ่งตามวุฒิการศึกษาสูงสุด</h2>
 <div id="unemploy_by_degree_chart" style="width: 900px; height: 500px;"></div>
