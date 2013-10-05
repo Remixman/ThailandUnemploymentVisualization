@@ -1,10 +1,14 @@
-/*#trend_box {
+.inlined_box {
 	display: inline-block;
 	background: #ffffff;
-}*/
+}
 
-.ddddd {
-	background: #666;
-	width: 400px;
-	height: 400px;
+.overall_trend {
+	width: 350px; 
+	height: 200px;
+}
+
+.sex_trend {
+	width: 500px; 
+	height: 280px;
 }

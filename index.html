@@ -176,9 +176,22 @@
 					['อุดมศึกษา'           , unemploy_data[year][5]]
 		]);
 		
+		// BarGraph API Documents
+		// https://google-developers.appspot.com/chart/interactive/docs/gallery/barchart
+		
 		var options = {
 			//title: 'Company Performance',
 			//vAxis: {title: 'Year',  titleTextStyle: {color: 'red'}}
+			hAxis: {
+				title: 'Percent (%)',
+				ticks: [0, 5, 10, 15, 20, 25, 30],
+				gridlines: {
+					count: 5
+				}
+			},
+			vAxis: {
+				title: 'วุฒิการศึกษาสูงสุด'
+			}
         };
 
         var chart = new google.visualization.BarChart(document.getElementById('unemploy_by_degree_chart'));
@@ -298,48 +311,48 @@
 </head>
 
 <body onload="initGraph();" onresize="resizeGraph();">
-  	
-<div id="ddddd"> </div>
-  	
+
 <h2>สถานการณ์ปัจุบัน</h2>
 <div id="infovis"></div>
 
 <h2>แนวโน้มการว่างงาน</h2>
   	
-<div class="trend_box">
+<div class="inlined_box">
 	ผู้มีงานทำ
-	<div id="employed_trend" style="width: 450px; height: 250px;"> </div>
+	<div id="employed_trend" class="overall_trend"> </div>
 </div>
 
-<div class="trend_box">
+<div class="inlined_box">
 	ผู้ว่างงาน
-	<div id="unemployed_trend" style="width: 450px; height:250px;"> </div>
+	<div id="unemployed_trend" class="overall_trend"> </div>
 </div>
   	 
-<div class="trend_box">
+<div class="inlined_box">
 	ผู้รอฤดูกาล
-	<div id="season_inactive_trend" style="width: 450px; height:250px;"> </div>
+	<div id="season_inactive_trend" class="overall_trend"> </div>
 </div>
   	
 <h2>จำนวนผู้มีงานทำแบ่งตามเพศ</h2>
 
-<div class="trend_box">
-	<div id="male_female_quan_chart" style="width: 500px; height: 280px;"> </div>
+<div class="inlined_box">
+	<div id="male_female_quan_chart" class="sex_trend"> </div>
 </div>
 
-<div class="trend_box">
-	<div id="male_female_ratio_chart" style="width: 500px; height: 280px;"> </div>
+<div class="inlined_box">
+	<div id="male_female_ratio_chart" class="sex_trend"> </div>
 </div>
 
 <h2>ผู้ว่างงานแบ่งตามวุฒิการศึกษาสูงสุด</h2>
-<div id="unemploy_by_degree_chart" style="width: 900px; height: 500px;"></div>
-<div id="unemploy_by_degree_trend" style="width: 900px; height: 500px;"></div>
+<div class="inlined_box">
+	<div id="unemploy_by_degree_chart" style="width: 500px; height: 280px;"> </div>
+</div>
+<div class="inlined_box">
+	<div id="unemploy_by_degree_trend" style="width: 500px; height: 280px;"> </div>
+</div>
 
-
-<div id="unemploy_map" style="width: 500px; height: 600px;"></div>
+<div id="unemploy_map" style="width: 500px; height: 400px;"></div>
 
 <div id="unemploy_timeplot" style="height: 150px;"></div>
 
 </body>
 </html>
-
