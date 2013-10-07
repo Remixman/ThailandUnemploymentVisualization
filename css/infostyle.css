@@ -20,6 +20,7 @@ h2 {
 	margin: 20px 20px 5px 20px;
 	padding: 10px;
 	font-weight: 800;
+	vertical-align: middle;
 }
 
 .main_containner {
@@ -39,6 +40,12 @@ h2 {
 	font-weight: 900;
 }
 
+.header_text {
+	position: relative;
+	left: 350px;
+	top: 100px;
+}
+
 .content_block {
 	width: 880px;
 	margin: 0px auto;
@@ -48,7 +55,10 @@ h2 {
 
 .inlined_box {
 	display: inline-block;
-	background: #ffffff;
+	font-size: 180%;
+	font-weight: 500;
+	margin-top: 5px;
+	margin-bottom: 25px;
 }
 
 .overall_trend {
@@ -57,6 +67,11 @@ h2 {
 }
 
 .sex_trend {
-	width: 500px; 
-	height: 280px;
+	width: 428px; 
+	height: 250px;
+}
+
+.degree_trend {
+	width: 428px; 
+	height: 300px;
 }

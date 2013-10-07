@@ -18,17 +18,41 @@
 	google.load("visualization", "1", {packages:["corechart","geochart"]});
 	google.setOnLoadCallback(drawChart);
 
-	function drawEmployedTrendPercentageChart() {
-		var data = google.visualization.arrayToDataTable([
+	function drawOverallTrendPercentageChart() {
+		var employData = google.visualization.arrayToDataTable([
 					['Year', 'Percent'],
-					['2548', 97.5788513],
-					['2549', 97.9591125],
-					['2550', 98.1253685],
-					['2551', 98.1862925],
-					['2552', 98.1251729],
-					['2553', 98.431458],
-					['2554', 98.8262533],
-					['2555', 98.8106211],
+					['48', 97.5788513],
+					['49', 97.9591125],
+					['50', 98.1253685],
+					['51', 98.1862925],
+					['52', 98.1251729],
+					['53', 98.431458],
+					['54', 98.8262533],
+					['55', 98.8106211],
+		]);
+		
+		var unemployData = google.visualization.arrayToDataTable([
+					['Year', 'Percent'],
+					['48', 1.83487237],
+					['49', 1.514537691],
+					['50', 1.376415143],
+					['51', 1.384548131],
+					['52', 1.489419888],
+					['53', 1.040748234],
+					['54', 0.67915991],
+					['55', 0.657468476],
+		]);
+		
+		var seasonData = google.visualization.arrayToDataTable([
+					['Year', 'Percent'],
+					['48', 0.586277696],
+					['49', 0.526348452],
+					['50', 0.498216399],
+					['51', 0.429158727],
+					['52', 0.385406588],
+					['53', 0.527794451],
+					['54', 0.494586839],
+					['55', 0.531910378],
 		]);
 		
 		var options = {
@@ -40,72 +64,21 @@
 				textPosition: 'out'
 			},
 			hAxis: {
-				title: 'ปี'
+				title: 'ปี (พ.ศ.)'
+			},
+			chartArea: {
+				width: 200
 			}
 		};
 
 		var chart = new google.visualization.LineChart(document.getElementById('employed_trend'));
-		chart.draw(data, options);
-	}
-	
-	function drawUnemployedTrendPercentageChart() {
-		var data = google.visualization.arrayToDataTable([
-					['Year', 'Percent'],
-					['2548', 1.83487237],
-					['2549', 1.514537691],
-					['2550', 1.376415143],
-					['2551', 1.384548131],
-					['2552', 1.489419888],
-					['2553', 1.040748234],
-					['2554', 0.67915991],
-					['2555', 0.657468476],
-		]);
+		chart.draw(employData, options);
 		
-		var options = {
-			legend: {
-				position: 'none'
-			},
-			vAxis: {
-				title: '%',
-				textPosition: 'out'
-			},
-			hAxis: {
-				title: 'ปี'
-			}
-		};
-
-		var chart = new google.visualization.LineChart(document.getElementById('unemployed_trend'));
-		chart.draw(data, options);
-	}
-	
-	function drawSeasonInactiveTrendPercentageChart() {
-		var data = google.visualization.arrayToDataTable([
-					['Year', 'Percent'],
-					['2548', 0.586277696],
-					['2549', 0.526348452],
-					['2550', 0.498216399],
-					['2551', 0.429158727],
-					['2552', 0.385406588],
-					['2553', 0.527794451],
-					['2554', 0.494586839],
-					['2555', 0.531910378],
-		]);
+		var chart2 = new google.visualization.LineChart(document.getElementById('unemployed_trend'));
+		chart2.draw(unemployData, options);
 		
-		var options = {
-			legend: {
-				position: 'none'
-			},
-			vAxis: {
-				title: '%',
-				textPosition: 'out'
-			},
-			hAxis: {
-				title: 'ปี'
-			}
-		};
-
-		var chart = new google.visualization.LineChart(document.getElementById('season_inactive_trend'));
-		chart.draw(data, options);
+		var chart3 = new google.visualization.LineChart(document.getElementById('season_inactive_trend'));
+		chart3.draw(seasonData, options);
 	}
       
 	function drawMaleFemaleQuantityChart() {
@@ -126,11 +99,10 @@
 		]);
 
 		var options = {
-			title: 'Male VS Female',
-			backgroundColor: '#aaaaaa',
-			/*legend: {
-				position: 'none'
-			},*/
+			//backgroundColor: '#aaaaaa',
+			legend: {
+				position: 'top'
+			},
 			vAxis: {
 				title: 'จำนวน',
 				minValue: 10000000,
@@ -166,7 +138,6 @@
 		]);
 
 		var options = {
-			title: 'Male VS Female'
 		};
 
 		var chart = new google.visualization.LineChart(document.getElementById('male_female_ratio_chart'));
@@ -200,8 +171,12 @@
 		var options = {
 			//title: 'Company Performance',
 			//vAxis: {title: 'Year',  titleTextStyle: {color: 'red'}}
+			colors: ['#eb6750'],
+			legend: {
+				position: 'none',
+			},
 			hAxis: {
-				title: 'Percent (%)',
+				title: 'เปอร์เซ็นต์ (%)',
 				ticks: [0, 5, 10, 15, 20, 25, 30],
 				gridlines: {
 					count: 5
@@ -261,9 +236,7 @@
 	}
 
 	function drawChart() {
-		drawEmployedTrendPercentageChart();
-		drawUnemployedTrendPercentageChart();
-		drawSeasonInactiveTrendPercentageChart();
+		drawOverallTrendPercentageChart();
 		
 		drawMaleFemaleQuantityChart();
 		drawMaleFemaleRatioChart();
@@ -320,11 +293,11 @@
 	
 	function initGraph() {
 		init();
-		initTimeplotOnLoad();
+		//initTimeplotOnLoad();
 	}
 	
 	function resizeGraph() {
-		initTimeplotOnResize();
+		//initTimeplotOnResize();
 	}
 </script>
 
@@ -335,7 +308,7 @@
 <div class="main_containner">
 
 <div class="header">
-	<div>สถิติการว่างงานในประเทศไทย</div>
+	<div class="header_text">สถิติการว่างงานในประเทศไทย</div>
 </div>
 
 <!--
@@ -349,38 +322,50 @@
 	<div class="inlined_box">
 		ผู้มีงานทำ<div id="employed_trend" class="overall_trend"> </div>
 	</div>
+	<div class="inlined_box" style="width: 12px;"> </div>
 	<div class="inlined_box">
 		ผู้ว่างงาน<div id="unemployed_trend" class="overall_trend"> </div>
 	</div>
+	<div class="inlined_box" style="width: 12px;"> </div>
   	<div class="inlined_box">
 		ผู้รอฤดูกาล<div id="season_inactive_trend" class="overall_trend"> </div>
 	</div>
+	
+	ตกลงงานกันน้อยลงนะลูก ดีใจด้วย :D
 </div>
   	
 <h2>จำนวนผู้มีงานทำแบ่งตามเพศ</h2>
 
 <div class="content_block">
 	<div class="inlined_box">
-		<div id="male_female_quan_chart" class="sex_trend"> </div>
+		จำนวนผู้มีงานทำ ชาย - หญิง<div id="male_female_quan_chart" class="sex_trend"> </div>
 	</div>
+	<div class="inlined_box" style="width: 16px;"> </div>
 	<div class="inlined_box">
-		<div id="male_female_ratio_chart" class="sex_trend"> </div>
+		เปอร์เซ็นต์ผู้มีงานทำ ชาย - หญิง<div id="male_female_ratio_chart" class="sex_trend"> </div>
 	</div>
 </div>
 
 <h2>ผู้ว่างงานแบ่งตามวุฒิการศึกษาสูงสุด</h2>
 <div class="content_block">
 	<div class="inlined_box">
-		<div id="unemploy_by_degree_chart" style="width: 500px; height: 280px;"> </div>
+		<div id="unemploy_by_degree_chart" class="degree_trend"> </div>
 	</div>
+	<div class="inlined_box" style="width: 16px;"> </div>
 	<div class="inlined_box">
-		<div id="unemploy_by_degree_trend" style="width: 500px; height: 280px;"> </div>
+		<div id="unemploy_by_degree_trend" class="degree_trend"> </div>
 	</div>
 </div>
 
-<div id="unemploy_map" style="width: 500px; height: 400px;"> </div>
+<h2>Timeline จำนวนผู้มีงานทำ</h2>
+<div class="content_block">
+	<!--<div id="unemploy_timeplot" style="height: 150px;"> </div>-->
+</div>
 
-<div id="unemploy_timeplot" style="height: 150px;"> </div>
+<h2>รายละเอียดของแต่ละปี</h2>
+<div class="content_block">
+	<div id="unemploy_map" style="width: 500px; height: 400px;"> </div>
+</div>
 
 
 </div>
