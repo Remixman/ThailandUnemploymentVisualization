@@ -3,6 +3,11 @@
 	src: url(../font/kruengprung.ttf);
 }
 
+/*@font-face {
+	font-family: waffle;
+	src: url(../font/WaffleRegular.otf);
+}*/
+
 body {
 	background: #b1cce4;
 	margin: 0px 0px 0px 0px;

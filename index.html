@@ -88,14 +88,14 @@
 		
 		var data = google.visualization.arrayToDataTable([
 					['Year', 'Male',      'Female'],
-					['2548', 19334658.5,  15922514.25],
-					['2549', 19416435.5,  16269094],
-					['2550', 19695739.25, 16553714.75],
-					['2551', 20092424,    16924188],
-					['2552', 20489253.25, 17217068],
-					['2553', 20652483.195375, 17384858.856125],
-					['2554', 20814282.4875, 17650384.34],
-					['2555', 21129083.6325, 17810046.35]
+					['48', 19334658.5,  15922514.25],
+					['49', 19416435.5,  16269094],
+					['50', 19695739.25, 16553714.75],
+					['51', 20092424,    16924188],
+					['52', 20489253.25, 17217068],
+					['53', 20652483.195375, 17384858.856125],
+					['54', 20814282.4875, 17650384.34],
+					['55', 21129083.6325, 17810046.35]
 		]);
 
 		var options = {
@@ -106,7 +106,8 @@
 			vAxis: {
 				title: 'จำนวน',
 				minValue: 10000000,
-				maxValue: 24000000,
+				maxValue: 25000000,
+				count: 5000000
 			},
 			hAxis: {
 				title: 'ปี',
@@ -117,6 +118,9 @@
 					//bold: <boolean>,
 					italic: false 
 				}
+			},
+			chartArea: {
+				width: 320
 			}
 		};
 
@@ -127,17 +131,33 @@
 	function drawMaleFemaleRatioChart() {
 		var data = google.visualization.arrayToDataTable([
 					['Year', 'Male',  'Female'],
-					['2548', 0.79162, 0.62706],
-					['2549', 0.79301, 0.62967],
-					['2550', 0.79563, 0.62967],
-					['2551', 0.79740, 0.63374],
-					['2552', 0.79810, 0.63428],
-					['2553', 0.79472, 0.63276],
-					['2554', 0.79315, 0.63579],
-					['2555', 0.79792, 0.63531]
+					['48', 0.79162, 0.62706],
+					['49', 0.79301, 0.62967],
+					['50', 0.79563, 0.62967],
+					['51', 0.79740, 0.63374],
+					['52', 0.79810, 0.63428],
+					['53', 0.79472, 0.63276],
+					['54', 0.79315, 0.63579],
+					['55', 0.79792, 0.63531]
 		]);
 
 		var options = {
+			legend: {
+				position: 'top'
+			},
+			hAxis: {
+				title: 'ปี',
+				titleTextStyle: {
+					color: 'black',
+  					//fontName: <string>,
+					//fontSize: <number>,
+					//bold: <boolean>,
+					italic: false 
+				}
+			},
+			chartArea: {
+				width: 320
+			}
 		};
 
 		var chart = new google.visualization.LineChart(document.getElementById('male_female_ratio_chart'));
@@ -157,9 +177,9 @@
 
 		var data = google.visualization.arrayToDataTable([
 					['วุฒิการศึกษา'        , 'Percent',],
-					['ประถมศึกษาและต่ำกว่า' , unemploy_data[year][0]],
+					['ประถม/ต่ำกว่า' , unemploy_data[year][0]],
 					['มัธยมต้น'           , unemploy_data[year][1]],
-					['มัธยมปลาย (สายสามัญ)', unemploy_data[year][2]],
+					['มัธยมปลาย'         , unemploy_data[year][2]],
 					['อาชีวศึกษา'          , unemploy_data[year][3]],
 					['วิชาชีพชั้นสูง'         , unemploy_data[year][4]],
 					['อุดมศึกษา'           , unemploy_data[year][5]]
@@ -169,6 +189,9 @@
 		// https://google-developers.appspot.com/chart/interactive/docs/gallery/barchart
 		
 		var options = {
+			legend: {
+				position: 'top'
+			},
 			//title: 'Company Performance',
 			//vAxis: {title: 'Year',  titleTextStyle: {color: 'red'}}
 			colors: ['#eb6750'],
@@ -206,7 +229,6 @@
 		]);
 		
 		var options = {
-			title: 'Unemployed by degree'
 		};
 
 		var chart = new google.visualization.LineChart(document.getElementById('unemploy_by_degree_trend'));
@@ -218,42 +240,39 @@
 		var unemploy_region_data = {};
 		unemploy_region_data['2548'] = google.visualization.arrayToDataTable([
 					['City', 'อัตราการว่างงาน'],
-					['Kamphaeng Phet', 10309.5/390448.25],
-					['Chiang Rai', 15741.25/637779.25],
-					['Chiang Mai', 34096.75/872191.25],
-					['Tak', 7058.5/197519.25],
-					['Nakhon Sawan', 3090.5/650426],
-					['Nan', 5468.75/240145]
+					['Kamphaeng Phet', 5794/430068.25],
+					['Chiang Rai', 26517.25/701531.25],
+					['Chiang Mai', 29624.25/943437.75],
+					['Tak', 5407.75/248025.25],
+					['Nakhon Sawan', 2847.5/614121],
+					['Nan', 5017.25/260806.75]
 		]);
 		unemploy_region_data['2549'] = google.visualization.arrayToDataTable([
 					['City', 'อัตราการว่างงาน'],
-					['Kamphaeng Phet', 10309.5/390448.25],
-					['Chiang Rai', 15741.25/637779.25],
-					['Chiang Mai', 34096.75/872191.25],
-					['Tak', 7058.5/197519.25],
-					['Nakhon Sawan', 3090.5/650426],
-					['Nan', 5468.75/240145]
 		]);
 		unemploy_region_data['2550'] = google.visualization.arrayToDataTable([
 					['City', 'อัตราการว่างงาน'],
-					['Kamphaeng Phet', 10309.5/390448.25],
-					['Chiang Rai', 15741.25/637779.25],
-					['Chiang Mai', 34096.75/872191.25],
-					['Tak', 7058.5/197519.25],
-					['Nakhon Sawan', 3090.5/650426],
-					['Nan', 5468.75/240145]
 		]);
 		
-		/* more */
+		unemploy_region_data['2551'] = google.visualization.arrayToDataTable([
+					['City', 'อัตราการว่างงาน']
+		]);
+		
+		unemploy_region_data['2552'] = google.visualization.arrayToDataTable([
+					['City', 'อัตราการว่างงาน']
+		]);
+		
+		unemploy_region_data['2553'] = google.visualization.arrayToDataTable([
+					['City', 'อัตราการว่างงาน']
+		]);
+		
+		unemploy_region_data['2554'] = google.visualization.arrayToDataTable([
+					['City', 'อัตราการว่างงาน']
+		]);
 		
 		unemploy_region_data['2555'] = google.visualization.arrayToDataTable([
 					['City', 'อัตราการว่างงาน'],
-					['Kamphaeng Phet', 1],
-					['Chiang Rai', 2],
-					['Chiang Mai', 5],
-					['Tak', 3],
-					['Nakhon Sawan', 1],
-					['Nan', 3]
+					['Kamphaeng Phet', 3540.52/439501.6],
 		]);
 
 		var options = {
@@ -332,7 +351,7 @@
 	}
 	
 	function initGraph() {
-		//init();
+		init();
 		initTimeplotOnLoad();
 	}
 	
@@ -355,11 +374,10 @@
 	<div class="header_text">สถิติการว่างงานในประเทศไทย</div>
 </div>
 
-<!--
 <h2>สถานการณ์ปัจุบัน</h2>
 <div class="content_block">
 	<div id="infovis"> </div>
-</div>-->
+</div>
 
 <h2>แนวโน้มการว่างงาน</h2>
 <div class="content_block">
@@ -393,11 +411,11 @@
 <h2>ผู้ว่างงานแบ่งตามวุฒิการศึกษาสูงสุด</h2>
 <div class="content_block">
 	<div class="inlined_box">
-		<div id="unemploy_by_degree_chart" class="degree_trend"> </div>
+		<div id="unemploy_by_degree_trend" class="degree_trend"> </div>
 	</div>
 	<div class="inlined_box" style="width: 16px;"> </div>
 	<div class="inlined_box">
-		<div id="unemploy_by_degree_trend" class="degree_trend"> </div>
+		<div id="unemploy_by_degree_chart" class="degree_trend"> </div>
 	</div>
 </div>
 
