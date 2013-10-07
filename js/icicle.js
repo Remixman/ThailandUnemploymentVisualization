@@ -52,8 +52,8 @@ function init(){
 					"id": "node04",
 					"name": "ผู้มีงานทำ (39.03)",
 					"data": {
-						"$area": 3903,
-						"$dim": 3903,
+						"$area": 3503,
+						"$dim": 3503,
 						"$color": "#ee6aff"
 					}
 				},
@@ -61,8 +61,8 @@ function init(){
 					"id": "node05",
 					"name": "ผู้ว่างงาน (0.25)",
 					"data": {
-						"$area": 25,
-						"$dim": 25,
+						"$area": 145,
+						"$dim": 145,
 						"$color": "#ee6aff"
 					}
 				},
@@ -70,8 +70,8 @@ function init(){
 					"id": "node06",
 					"name": "กำลังแรงงานที่รอฤดูกาล (0.20)",
 					"data": {
-						"$area": 20,
-						"$dim": 20,
+						"$area": 140,
+						"$dim": 140,
 						"$color": "#ee6aff"
 					}
 				}

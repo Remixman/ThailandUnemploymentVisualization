@@ -34,7 +34,16 @@
 		]);
 		
 		var options = {
-			title: 'Employed rate'
+			legend: {
+				position: 'none'
+			},
+			vAxis: {
+				title: '%',
+				textPosition: 'out'
+			},
+			hAxis: {
+				title: 'ปี'
+			}
 		};
 
 		var chart = new google.visualization.LineChart(document.getElementById('employed_trend'));
@@ -57,7 +66,16 @@
 		]);
 		
 		var options = {
-			title: 'Unemployed rate'
+			legend: {
+				position: 'none'
+			},
+			vAxis: {
+				title: '%',
+				textPosition: 'out'
+			},
+			hAxis: {
+				title: 'ปี'
+			}
 		};
 
 		var chart = new google.visualization.LineChart(document.getElementById('unemployed_trend'));
@@ -80,7 +98,16 @@
 		]);
 		
 		var options = {
-			title: 'Seasonally inactive labor force'
+			legend: {
+				position: 'none'
+			},
+			vAxis: {
+				title: '%',
+				textPosition: 'out'
+			},
+			hAxis: {
+				title: 'ปี'
+			}
 		};
 
 		var chart = new google.visualization.LineChart(document.getElementById('season_inactive_trend'));
@@ -109,6 +136,9 @@
 		var options = {
 			title: 'Male VS Female',
 			backgroundColor: '#aaaaaa',
+			/*legend: {
+				position: 'none'
+			},*/
 			vAxis: {
 				title: 'จำนวน',
 				minValue: 10000000,
