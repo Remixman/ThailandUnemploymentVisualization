@@ -21,8 +21,6 @@
 	function drawEmployedTrendPercentageChart() {
 		var data = google.visualization.arrayToDataTable([
 					['Year', 'Percent'],
-					['2546', 96.9608985],
-					['2547', 97.2311659],
 					['2548', 97.5788513],
 					['2549', 97.9591125],
 					['2550', 98.1253685],
@@ -53,8 +51,6 @@
 	function drawUnemployedTrendPercentageChart() {
 		var data = google.visualization.arrayToDataTable([
 					['Year', 'Percent'],
-					['2546', 2.160917048],
-					['2547', 2.069441485],
 					['2548', 1.83487237],
 					['2549', 1.514537691],
 					['2550', 1.376415143],
@@ -85,8 +81,6 @@
 	function drawSeasonInactiveTrendPercentageChart() {
 		var data = google.visualization.arrayToDataTable([
 					['Year', 'Percent'],
-					['2546', 0.87818376],
-					['2547', 0.699391925],
 					['2548', 0.586277696],
 					['2549', 0.526348452],
 					['2550', 0.498216399],
@@ -121,8 +115,6 @@
 		
 		var data = google.visualization.arrayToDataTable([
 					['Year', 'Male',      'Female'],
-					['2546', 18803791.75, 15037231.25],
-					['2547', 19338565,    15390246.25],
 					['2548', 19334658.5,  15922514.25],
 					['2549', 19416435.5,  16269094],
 					['2550', 19695739.25, 16553714.75],
@@ -163,8 +155,6 @@
 	function drawMaleFemaleRatioChart() {
 		var data = google.visualization.arrayToDataTable([
 					['Year', 'Male',  'Female'],
-					['2546', 0.78582, 0.61667],
-					['2547', 0.79129, 0.61825],
 					['2548', 0.79162, 0.62706],
 					['2549', 0.79301, 0.62967],
 					['2550', 0.79563, 0.62967],
@@ -185,8 +175,6 @@
 	
 	function drawUnemployedByDegreeChart(year) {
 		var unemploy_data = {};
-		unemploy_data['2546'] = new Array(41.7, 19.6, 11.8, 4.4, 7.3, 15.2);
-		unemploy_data['2547'] = new Array(39.9, 19.7, 13.2, 4, 7.6, 15.6);
 		unemploy_data['2548'] = new Array(38.7, 21.9, 11.4, 4.6, 7.9, 15.5);
 		unemploy_data['2549'] = new Array(36.6, 21.6, 13.1, 4.3, 6.2, 18.2);
 		unemploy_data['2550'] = new Array(32.8, 22.1, 13.2, 4.6, 8.4, 18.9);
@@ -232,8 +220,6 @@
 	function drawUnemployedByDegreeTrendChart() {
 		var data = google.visualization.arrayToDataTable([
 					['Year', 'ประถมศึกษาและต่ำกว่า', 'มัธยมต้น', 'มัธยมปลาย (สายสามัญ)', 'อาชีวศึกษา', 'วิชาชีพชั้นสูง', 'อุดมศึกษา'],
-					['2546', 41.7, 19.6, 11.8, 4.4, 7.3, 15.2],
-					['2547', 39.9, 19.7, 13.2, 4, 7.6, 15.6],
 					['2548', 38.7, 21.9, 11.4, 4.6, 7.9, 15.5],
 					['2549', 36.6, 21.6, 13.1, 4.3, 6.2, 18.2],
 					['2550', 32.8, 22.1, 13.2, 4.6, 8.4, 18.9],
@@ -253,11 +239,15 @@
 	}
 	
 	function drawUnemployedMap() {
+		// 2546
 		var data = google.visualization.arrayToDataTable([
-					['City', 'Population'],
-					['Bangkok', 40],
-					['Trang', 20],
-					['Phitsanulok', 50]
+					['City', 'อัตราการว่างงาน'],
+					['Kamphaeng Phet', 10309.5/390448.25],
+					['Chiang Rai', 15741.25/637779.25],
+					['Chiang Mai', 34096.75/872191.25],
+					['Tak', 7058.5/197519.25],
+					['Nakhon Sawan', 3090.5/650426],
+					['Nan', 5468.75/240145]
 		]);
 
 		var options = {
@@ -342,47 +332,57 @@
 
 <body onload="initGraph();" onresize="resizeGraph();">
 
+<div class="main_containner">
+
+<div class="header">
+	<div>สถิติการว่างงานในไทย</div>
+</div>
+
 <h2>สถานการณ์ปัจุบัน</h2>
-<div id="infovis"></div>
+<div class="content_block">
+	<div id="infovis"> </div>
+</div>
 
 <h2>แนวโน้มการว่างงาน</h2>
-  	
-<div class="inlined_box">
-	ผู้มีงานทำ
-	<div id="employed_trend" class="overall_trend"> </div>
-</div>
-
-<div class="inlined_box">
-	ผู้ว่างงาน
-	<div id="unemployed_trend" class="overall_trend"> </div>
-</div>
-  	 
-<div class="inlined_box">
-	ผู้รอฤดูกาล
-	<div id="season_inactive_trend" class="overall_trend"> </div>
+<div class="content_block">
+	<div class="inlined_box">
+		ผู้มีงานทำ<div id="employed_trend" class="overall_trend"> </div>
+	</div>
+	<div class="inlined_box">
+		ผู้ว่างงาน<div id="unemployed_trend" class="overall_trend"> </div>
+	</div>
+  	<div class="inlined_box">
+		ผู้รอฤดูกาล<div id="season_inactive_trend" class="overall_trend"> </div>
+	</div>
 </div>
   	
 <h2>จำนวนผู้มีงานทำแบ่งตามเพศ</h2>
 
-<div class="inlined_box">
-	<div id="male_female_quan_chart" class="sex_trend"> </div>
-</div>
-
-<div class="inlined_box">
-	<div id="male_female_ratio_chart" class="sex_trend"> </div>
+<div class="content_block">
+	<div class="inlined_box">
+		<div id="male_female_quan_chart" class="sex_trend"> </div>
+	</div>
+	<div class="inlined_box">
+		<div id="male_female_ratio_chart" class="sex_trend"> </div>
+	</div>
 </div>
 
 <h2>ผู้ว่างงานแบ่งตามวุฒิการศึกษาสูงสุด</h2>
-<div class="inlined_box">
-	<div id="unemploy_by_degree_chart" style="width: 500px; height: 280px;"> </div>
-</div>
-<div class="inlined_box">
-	<div id="unemploy_by_degree_trend" style="width: 500px; height: 280px;"> </div>
+<div class="content_block">
+	<div class="inlined_box">
+		<div id="unemploy_by_degree_chart" style="width: 500px; height: 280px;"> </div>
+	</div>
+	<div class="inlined_box">
+		<div id="unemploy_by_degree_trend" style="width: 500px; height: 280px;"> </div>
+	</div>
 </div>
 
-<div id="unemploy_map" style="width: 500px; height: 400px;"></div>
+<div id="unemploy_map" style="width: 500px; height: 400px;"> </div>
 
-<div id="unemploy_timeplot" style="height: 150px;"></div>
+<div id="unemploy_timeplot" style="height: 150px;"> </div>
+
+
+</div>
 
 </body>
 </html>

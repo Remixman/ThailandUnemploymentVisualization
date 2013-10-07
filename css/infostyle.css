@@ -1,11 +1,57 @@
+@font-face {
+	font-family: kruengprung;
+	src: url(../font/kruengprung.ttf);
+}
+
+body {
+	background: #b1cce4;
+	margin: 0px 0px 0px 0px;
+	border: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	color: #ffffff;
+	font-family: kruengprung;
+}
+
+h2 {
+	background: #eb6750;
+	width: 500px;
+	height: 50px;
+	font-size: 150%;
+	margin: 20px 20px 5px 20px;
+}
+
+.main_containner {
+	width: 980px;
+	background: #4b8cc4;
+	margin: 0px auto;
+	float:none;
+}
+
+.header {
+	width: 880px;
+	height: 200px;
+	margin: 0px auto;
+	background: url(../img/header_img.png) 0px 13px no-repeat;
+	/*padding: 80px 350px 0px 0px;*/
+	font-size: 550%;
+	font-weight: 900;
+}
+
+.content_block {
+	width: 880px;
+	margin: 0px auto;
+	padding: 20px;
+	background: #53afbe;
+}
+
 .inlined_box {
 	display: inline-block;
 	background: #ffffff;
 }
 
 .overall_trend {
-	width: 350px; 
-	height: 200px;
+	width: 280px; 
+	height: 180px;
 }
 
 .sex_trend {
