@@ -23,6 +23,16 @@ h2 {
 	vertical-align: middle;
 }
 
+a {
+    color:#ffffff;
+    text-decoration:underline;
+}
+
+a:hover {
+	color:#ffffff;
+	text-decoration:underline;
+}
+
 .main_containner {
 	width: 980px;
 	background: #4b8cc4;
@@ -74,4 +84,20 @@ h2 {
 .degree_trend {
 	width: 428px; 
 	height: 300px;
+}
+
+.year_block {
+	display: inline-block;
+	width: 80px;
+	height: 40px;
+	background: #4b8cc4;
+	border: 2px;
+	border-style:solid;
+	border-color: #ffffff;
+	font-size: 180%;
+	text-align: center;
+}
+
+.selected_year_block {
+	background: #eb6750;
 }

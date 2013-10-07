@@ -194,15 +194,15 @@
 	
 	function drawUnemployedByDegreeTrendChart() {
 		var data = google.visualization.arrayToDataTable([
-					['Year', 'ประถมศึกษาและต่ำกว่า', 'มัธยมต้น', 'มัธยมปลาย (สายสามัญ)', 'อาชีวศึกษา', 'วิชาชีพชั้นสูง', 'อุดมศึกษา'],
-					['2548', 38.7, 21.9, 11.4, 4.6, 7.9, 15.5],
-					['2549', 36.6, 21.6, 13.1, 4.3, 6.2, 18.2],
-					['2550', 32.8, 22.1, 13.2, 4.6, 8.4, 18.9],
-					['2551', 31.4, 23.8, 12.7, 5.6, 8.4, 18.2],
-					['2552', 30, 23.3, 12.5, 5.9, 9.2, 19.1],
-					['2553', 27, 22.6, 12.1, 5.3, 8.4, 24.5],
-					['2554', 26.7, 21.8, 12.7, 5.2, 9.1, 24.5],
-					['2555', 22, 22.8, 14.9, 5.1, 10, 25.2]
+					['Year', 'ประถม/ต่ำกว่า', 'มัธยมต้น', 'มัธยมปลาย', 'อาชีวศึกษา', 'วิชาชีพชั้นสูง', 'อุดมศึกษา'],
+					['48', 38.7, 21.9, 11.4, 4.6, 7.9, 15.5],
+					['49', 36.6, 21.6, 13.1, 4.3, 6.2, 18.2],
+					['50', 32.8, 22.1, 13.2, 4.6, 8.4, 18.9],
+					['51', 31.4, 23.8, 12.7, 5.6, 8.4, 18.2],
+					['52', 30, 23.3, 12.5, 5.9, 9.2, 19.1],
+					['53', 27, 22.6, 12.1, 5.3, 8.4, 24.5],
+					['54', 26.7, 21.8, 12.7, 5.2, 9.1, 24.5],
+					['55', 22, 22.8, 14.9, 5.1, 10, 25.2]
 		]);
 		
 		var options = {
@@ -213,9 +213,10 @@
 		chart.draw(data, options);
 	}
 	
-	function drawUnemployedMap() {
-		// 2546
-		var data = google.visualization.arrayToDataTable([
+	function drawUnemployedMap(year) {
+		
+		var unemploy_region_data = {};
+		unemploy_region_data['2548'] = google.visualization.arrayToDataTable([
 					['City', 'อัตราการว่างงาน'],
 					['Kamphaeng Phet', 10309.5/390448.25],
 					['Chiang Rai', 15741.25/637779.25],
@@ -224,15 +225,46 @@
 					['Nakhon Sawan', 3090.5/650426],
 					['Nan', 5468.75/240145]
 		]);
+		unemploy_region_data['2549'] = google.visualization.arrayToDataTable([
+					['City', 'อัตราการว่างงาน'],
+					['Kamphaeng Phet', 10309.5/390448.25],
+					['Chiang Rai', 15741.25/637779.25],
+					['Chiang Mai', 34096.75/872191.25],
+					['Tak', 7058.5/197519.25],
+					['Nakhon Sawan', 3090.5/650426],
+					['Nan', 5468.75/240145]
+		]);
+		unemploy_region_data['2550'] = google.visualization.arrayToDataTable([
+					['City', 'อัตราการว่างงาน'],
+					['Kamphaeng Phet', 10309.5/390448.25],
+					['Chiang Rai', 15741.25/637779.25],
+					['Chiang Mai', 34096.75/872191.25],
+					['Tak', 7058.5/197519.25],
+					['Nakhon Sawan', 3090.5/650426],
+					['Nan', 5468.75/240145]
+		]);
+		
+		/* more */
+		
+		unemploy_region_data['2555'] = google.visualization.arrayToDataTable([
+					['City', 'อัตราการว่างงาน'],
+					['Kamphaeng Phet', 1],
+					['Chiang Rai', 2],
+					['Chiang Mai', 5],
+					['Tak', 3],
+					['Nakhon Sawan', 1],
+					['Nan', 3]
+		]);
 
 		var options = {
 			region: 'TH',
 			displayMode: 'region',
-			resolution: 'provinces'
+			resolution: 'provinces',
+			colorAxis: {colors: ['#ffffff', '#eb6750']}
 		};
 
         var chart = new google.visualization.GeoChart(document.getElementById('unemploy_map'));
-        chart.draw(data, options);
+        chart.draw(unemploy_region_data[year], options);
 	}
 
 	function drawChart() {
@@ -245,7 +277,7 @@
 		drawUnemployedByDegreeTrendChart();
 		
 		// By year
-		drawUnemployedMap();
+		drawUnemployedMap('2555');
 	}
 	
 	/* Simile Timeplot function */
@@ -298,6 +330,10 @@
 	
 	function resizeGraph() {
 		//initTimeplotOnResize();
+	}
+	
+	function select_view_year(year) {
+		drawUnemployedMap(year);
 	}
 </script>
 
@@ -357,16 +393,27 @@
 	</div>
 </div>
 
-<h2>Timeline จำนวนผู้มีงานทำ</h2>
+<h2>Timeline จำนวนผู้มีงานทำ หรือเอาเป็นผู้ว่างงานดี ?</h2>
 <div class="content_block">
 	<!--<div id="unemploy_timeplot" style="height: 150px;"> </div>-->
 </div>
 
 <h2>รายละเอียดของแต่ละปี</h2>
 <div class="content_block">
+	<a href="#"><div class="year_block" onclick="select_view_year('2548'); return false;">2548</div></a>
+	<a href="#"><div class="year_block" onclick="select_view_year('2549'); return false;">2549</div></a>
+	<a href="#"><div class="year_block" onclick="select_view_year('2550'); return false;">2550</div></a>
+	<a href="#"><div class="year_block" onclick="select_view_year('2551'); return false;">2551</div></a>
+	<a href="#"><div class="year_block" onclick="select_view_year('2552'); return false;">2552</div></a>
+	<a href="#"><div class="year_block" onclick="select_view_year('2553'); return false;">2553</div></a>
+	<a href="#"><div class="year_block" onclick="select_view_year('2554'); return false;">2554</div></a>
+	<a href="#"><div class="year_block" class="selected_year_block" onclick="select_view_year('2555'); return false;">2555</div></a>
 	<div id="unemploy_map" style="width: 500px; height: 400px;"> </div>
 </div>
 
+<div class="reference_block">
+	ข้อมูลทั้งหมดขโมยมาจาก 
+</div>
 
 </div>
 
