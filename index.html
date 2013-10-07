@@ -284,7 +284,6 @@
 	var timeplot;
 	function initTimeplotOnLoad() {
 		var unemployrateSource = new Timeplot.DefaultEventSource();
-		
 		var timeGeometry = new Timeplot.DefaultTimeGeometry({
 			gridColor: new Timeplot.Color("#000000"),
 			axisLabelsPlacement: "top"
@@ -308,7 +307,7 @@
 				showValues: true
 		})
 		];
-		
+
 		timeplot = Timeplot.create(document.getElementById("unemploy_timeplot"), plotInfo);
 		timeplot.loadText("unemployrate_2004-2012.txt", ",", unemployrateSource);
 	}
@@ -324,12 +323,12 @@
 	}
 	
 	function initGraph() {
-		init();
-		//initTimeplotOnLoad();
+		//init();
+		initTimeplotOnLoad();
 	}
 	
 	function resizeGraph() {
-		//initTimeplotOnResize();
+		initTimeplotOnResize();
 	}
 	
 	function select_view_year(year) {
@@ -395,7 +394,7 @@
 
 <h2>Timeline จำนวนผู้มีงานทำ หรือเอาเป็นผู้ว่างงานดี ?</h2>
 <div class="content_block">
-	<!--<div id="unemploy_timeplot" style="height: 150px;"> </div>-->
+	<div id="unemploy_timeplot" style="height: 180px;"> </div>
 </div>
 
 <h2>รายละเอียดของแต่ละปี</h2>
