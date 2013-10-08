@@ -99,10 +99,45 @@ a:hover {
 	height: 300px;
 }
 
+.var_block {
+	background: #4b8cc4;
+	display: inline-block;
+	width: 178px;
+	height: 40px;
+	margin: 0px;
+	padding: 0px;
+	border-bottom: 0px;
+	border-left: 1px;
+	border-top: 1px;
+	border-right: 1px;
+	border-style:solid;
+	border-color: #ffffff;
+	font-size: 180%;
+	text-align: center;
+}
+
+.selected_var_block {
+	background: #53afbe;
+	display: inline-block;
+	width: 178px;
+	height: 40px;
+	margin: 0px;
+	padding: 0px;
+	border-bottom: 0px;
+	border-left: 1px;
+	border-top: 1px;
+	border-right: 1px;
+	border-style:solid;
+	border-color: #ffffff;
+	font-size: 180%;
+	font-weight: 800;
+	text-align: center;
+}
+
 .year_block {
 	background: #4b8cc4;
 	display: inline-block;
-	width: 105px;
+	width: 109px;
 	height: 40px;
 	margin: 0px;
 	padding: 0px;
@@ -119,7 +154,7 @@ a:hover {
 .selected_year_block {
 	background: #53afbe;
 	display: inline-block;
-	width: 105px;
+	width: 109px;
 	height: 40px;
 	margin: 0px;
 	padding: 0px;
