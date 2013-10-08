@@ -56,6 +56,13 @@ a:hover {
 	top: 100px;
 }
 
+.select_bar {
+	width: 920px;
+	margin: 0px auto;
+	padding: 0px;
+	background: #4b8cc4;
+}
+
 .content_block {
 	width: 880px;
 	margin: 0px auto;
@@ -93,11 +100,16 @@ a:hover {
 }
 
 .year_block {
-	display: inline-block;
-	width: 80px;
-	height: 40px;
 	background: #4b8cc4;
-	border: 2px;
+	display: inline-block;
+	width: 105px;
+	height: 40px;
+	margin: 0px;
+	padding: 0px;
+	border-bottom: 0px;
+	border-left: 1px;
+	border-top: 1px;
+	border-right: 1px;
 	border-style:solid;
 	border-color: #ffffff;
 	font-size: 180%;
@@ -105,7 +117,21 @@ a:hover {
 }
 
 .selected_year_block {
-	background: #eb6750;
+	background: #53afbe;
+	display: inline-block;
+	width: 105px;
+	height: 40px;
+	margin: 0px;
+	padding: 0px;
+	border-bottom: 0px;
+	border-left: 1px;
+	border-top: 1px;
+	border-right: 1px;
+	border-style:solid;
+	border-color: #ffffff;
+	font-size: 180%;
+	font-weight: 800;
+	text-align: center;
 }
 
 #unemploy_map {
