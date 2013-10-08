@@ -87,7 +87,7 @@
 		// https://google-developers.appspot.com/chart/interactive/docs/gallery/linechart
 		
 		var data = google.visualization.arrayToDataTable([
-					['Year', 'Male',      'Female'],
+					['Year', 'ชาย',      'หญิง'],
 					['48', 19334658.5,  15922514.25],
 					['49', 19416435.5,  16269094],
 					['50', 19695739.25, 16553714.75],
@@ -100,8 +100,9 @@
 
 		var options = {
 			//backgroundColor: '#aaaaaa',
+			colors: ['#96d4e1', '#ef8eb7'],
 			legend: {
-				position: 'top'
+				position: 'none'
 			},
 			vAxis: {
 				title: 'จำนวน',
@@ -142,8 +143,9 @@
 		]);
 
 		var options = {
+			colors: ['#96d4e1', '#ef8eb7'],
 			legend: {
-				position: 'top'
+				position: 'none'
 			},
 			hAxis: {
 				title: 'ปี',
@@ -237,6 +239,28 @@
 
 		var chart = new google.visualization.LineChart(document.getElementById('unemploy_by_degree_trend'));
 		chart.draw(data, options);
+	}
+	
+	function drawRelationChart(another_variable) {
+		var data = google.visualization.arrayToDataTable([
+					['Age', 'Weight'],
+					[ 8,      12],
+					[ 4,      5.5],
+					[ 11,     14],
+					[ 4,      5],
+					[ 3,      3.5],
+					[ 6.5,    7]
+        ]);
+        
+        var options = {
+			title: 'Age vs. Weight comparison',
+			hAxis: {title: 'Age', minValue: 0, maxValue: 15},
+			vAxis: {title: 'Weight', minValue: 0, maxValue: 15},
+			legend: 'none'
+        };
+
+		var chart = new google.visualization.ScatterChart(document.getElementById('relation_chart'));
+        chart.draw(data, options);
 	}
 	
 	function drawUnemployedMap(year) {
@@ -920,6 +944,8 @@
 		drawUnemployedByDegreeChart('2555', 'unemploy_by_degree_chart');
 		drawUnemployedByDegreeTrendChart();
 		
+		drawRelationChart();
+		
 		// By year
 		drawUnemployedMap('2555');
 		drawUnemployedByDegreeChart('2555', 'unemploy_degree');
@@ -1039,11 +1065,15 @@
 
 <div class="content_block">
 	<div class="inlined_box">
-		จำนวนผู้มีงานทำ ชาย - หญิง<div id="male_female_quan_chart" class="sex_trend"> </div>
+		จำนวนผู้มีงานทำ <img src="img/male.png" /><div style="color: #96d4e1; display: inline-block">ชาย</div> - 
+		<img src="img/female.png" /><div style="color: #ef8eb7; display: inline-block">หญิง</div>
+		<div id="male_female_quan_chart" class="sex_trend"> </div>
 	</div>
 	<div class="inlined_box" style="width: 16px;"> </div>
 	<div class="inlined_box">
-		เปอร์เซ็นต์ผู้มีงานทำ ชาย - หญิง<div id="male_female_ratio_chart" class="sex_trend"> </div>
+		เปอร์เซ็นต์ผู้มีงานทำ  <img src="img/male.png" /><div style="color: #96d4e1; display: inline-block">ชาย</div> - 
+		<img src="img/female.png" /><div style="color: #ef8eb7; display: inline-block">หญิง</div>
+		<div id="male_female_ratio_chart" class="sex_trend"> </div>
 	</div>
 </div>
 
@@ -1065,8 +1095,14 @@
 
 <h2>ความสัมพันธ์กับข้อมูลอื่น</h2>
 <div class="select_bar">
+	<a href="#"><div id="var_block_employee" class="var_block" onclick="return false;">จำนวนลูกจ้าง</div></a>
+	<a href="#"><div id="var_block_x" class="var_block" onclick="return false;">จำนวนการจดทะเบียนนิติบุคคล</div></a>
+	<a href="#"><div id="var_block_xx" class="var_block" onclick="return false;">จำนวนโรงงานอุตสาหกรรม</div></a>
+	<a href="#"><div id="var_block_ni" class="var_block" onclick="return false;">รายได้ประชาชาติ (NI)</div></a>
+	<a href="#"><div id="var_block_gdp" class="var_block" onclick="return false;">ผลิตภัณฑ์มวลรวมในประเทศ (GDP)</div></a>
 </div>
 <div class="content_block">
+	<div id="relation_chart"> </div>
 </div>
 
 <h2>รายละเอียดของแต่ละปี</h2>
@@ -1081,8 +1117,9 @@
 	<a href="#"><div id="year_block_2555" class="selected_year_block" onclick="select_view_year('2555'); return false;">2555</div></a>
 </div>
 <div class="content_block">
-	<div id="unemploy_map"> </div>
-	
+	<div class="inlined_box">
+		<div id="unemploy_map"> </div>
+	</div>
 	<div class="inlined_box">
 		<div id="unemploy_degree"> </div>
 	</div>
