@@ -19,6 +19,54 @@
 	google.load("visualization", "1", {packages:["corechart","geochart"]});
 	google.setOnLoadCallback(drawChart);
 
+	function drawWorldUnemploymentRate() {
+		var data = google.visualization.arrayToDataTable([
+					['ประเทศ', 'อัตราการว่างงาน',],
+					['สเปน', 24.9],
+					['อิตาลี', 10.6],
+					['ฝรั่งเศษ', 10.1],
+					['อเมริกา', 8.2],
+					['อังกฤษ', 8.1],
+					['ฟิลิปปินส์', 7.0],
+					['อินโดนีเซีย', 6.2],
+					['เวียดนาม', 4.5],
+					['ญี่ปุ่น' , 4.5],
+					['ไต้หวัน' , 4.5],
+					['จีน', 4.1],
+					['พม่า', 4.0],
+					['เกาหลี', 3.3],
+					['สิงคโปร์', 2.1],
+					['ไทย', 0.7],
+					['อุซเบกิสถาน', 0.2],
+					
+		]);
+		
+		// BarGraph API Documents
+		// https://google-developers.appspot.com/chart/interactive/docs/gallery/barchart
+		
+		var options = {
+			legend: {
+				position: 'top'
+			},
+			//title: 'Company Performance',
+			//vAxis: {title: 'Year',  titleTextStyle: {color: 'red'}}
+			colors: ['#eb6750'],
+			legend: {
+				position: 'none',
+			},
+			hAxis: {
+				title: 'ประเทศ',
+				slantedText: true
+			},
+			vAxis: {
+				title: 'อัตราการว่างงาน'
+			}
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('world_stat'));
+        chart.draw(data, options);
+	}
+
 	function drawOverallTrendPercentageChart() {
 		var employData = google.visualization.arrayToDataTable([
 					['Year', 'Percent'],
@@ -410,6 +458,8 @@
 	}
 
 	function drawChart() {
+		drawWorldUnemploymentRate();
+		
 		drawOverallTrendPercentageChart();
 		
 		drawMaleFemaleQuantityChart();
@@ -530,9 +580,15 @@
 
 <h2>สถานการณ์ปัจุบัน</h2>
 <div class="content_block">
+	<div class="inlined_box" style="width: 880px;">
+		อัตราการว่างงานของแต่ละประเทศในปี 2012<div id="world_stat"> </div>
+	</div>
+	<div class="text_block">
+		ประเทศไทยเมื่อเทียบกับประเทศอื่นภายในโลกแล้วถือว่าเป็นประเทศที่มีอัตราการว่างงานต่ำเป็นอันดับต้นๆ
+	</div>
 	<div id="infovis"> </div>
 	<div class="text_block">
-		ประเทศไทยเมื่อเทียบกับประเทศอื่นภายในโลกแล้วถือว่าเป็นประเทศที่มีอัตราการว่างงานต่ำเป็นอันดับต้นๆ 
+		จำนวนผู้ว่างงาน 
 	</div>
 	http://www.gfmag.com/component/content/article/119-economic-data/12384-worlds-unemployment-ratescom.html#axzz2h68KBJMl
 </div>
