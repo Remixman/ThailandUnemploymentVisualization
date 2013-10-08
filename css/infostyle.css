@@ -3,6 +3,11 @@
 	src: url(../font/kruengprung.ttf);
 }
 
+@font-face {
+	font-family: wdbangna;
+	src: url(../font/wdbangna.ttf);
+}
+
 body {
 	background: #b1cce4;
 	margin: 0px 0px 0px 0px;
@@ -71,9 +76,16 @@ a:hover {
 }
 
 .reference_block {
+	font-family: wdbangna;
+	font-size: 70%;
 	width: 880px;
-	margin: 10px auto;
-	padding: 10px;
+	margin: 5px auto;
+	padding: 2px;
+}
+
+.text_block {
+	font-family: wdbangna;
+	margin: 0px;
 }
 
 .inlined_box {
@@ -91,7 +103,7 @@ a:hover {
 
 .sex_trend {
 	width: 428px; 
-	height: 250px;
+	height: 180px;
 }
 
 .degree_trend {
@@ -102,7 +114,7 @@ a:hover {
 .var_block {
 	background: #4b8cc4;
 	display: inline-block;
-	width: 178px;
+	width: 223px;
 	height: 40px;
 	margin: 0px;
 	padding: 0px;
@@ -119,7 +131,7 @@ a:hover {
 .selected_var_block {
 	background: #53afbe;
 	display: inline-block;
-	width: 178px;
+	width: 223px;
 	height: 40px;
 	margin: 0px;
 	padding: 0px;
@@ -169,8 +181,23 @@ a:hover {
 	text-align: center;
 }
 
+#relation_chart {
+	width: 360px;
+	height: 280px;
+}
+
+#relation_linechart {
+	width: 494px;
+	height: 280px;
+}
+
 #unemploy_map {
 	width: 500px;
+	height: 400px;
+}
+
+#unemploy_degree {
+	width: 350px;
 	height: 400px;
 }
 
