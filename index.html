@@ -21,7 +21,7 @@
 
 	function drawWorldUnemploymentRate() {
 		var data = google.visualization.arrayToDataTable([
-					['ประเทศ', 'อัตราการว่างงาน (เปอร์เซ็นต์)',],
+					['ประเทศ', 'อัตราการว่างงาน (%)',],
 					['สเปน', 24.9],
 					['อิตาลี', 10.6],
 					['ฝรั่งเศษ', 10.1],
@@ -54,7 +54,12 @@
 				slantedText: true
 			},
 			vAxis: {
-				title: 'อัตราการว่างงาน (เปอร์เซ็นต์)'
+				title: 'อัตราการว่างงาน (%)'
+			},
+			chartArea: {
+				top: 40,
+				left: 80,
+				width: 730
 			}
         };
 
@@ -166,7 +171,9 @@
 				}*/
 			},
 			chartArea: {
-				width: 300
+				top: 30,
+				left: 70,
+				width: 310
 			}
 		};
 
@@ -206,7 +213,9 @@
 				}*/
 			},
 			chartArea: {
-				width: 300
+				top: 30,
+				left: 70,
+				width: 310
 			}
 		};
 
@@ -262,9 +271,21 @@
         var chart;
         if (div_id == 'unemploy_degree') {
         	options.vAxis.ticks = [0, 5, 10, 15, 20, 25, 30, 35, 40];
+        	options.hAxis.slantedText = true;
+        	options.chartArea = { 
+        		top: 35,
+        		width: 260,
+        		height: 285
+        	};
         	chart = new google.visualization.ColumnChart(document.getElementById(div_id));
         	chart.draw(data, options);
         } else {
+        	options.chartArea = { 
+        		left: 90,
+        		top: 40,
+        		width: 297,
+        		height: 200
+        	};
         	chart = new google.visualization.BarChart(document.getElementById(div_id));
         	chart.draw(data, options);
         }
@@ -287,6 +308,11 @@
 		]);
 		
 		var options = {
+			chartArea: {
+				top: 40,
+				left: 60,
+				height: 200
+			},
 			vAxis: { title: 'เปอร์เซ็นต์ (%)' },
 			hAxis: { title: 'ปี (ค.ศ.)' },
 			legend: {
@@ -434,6 +460,12 @@
         }
         
         var options = {
+        	chartArea: { 
+        		left: 70,
+        		top: 35,
+        		width: 250,
+        		height: 200
+        	},
 			hAxis: {title: 'จำนวนผู้มีงานทำ'},
 			vAxis: {title: vaxis_title},
 			colors: ['#eb6750'],
@@ -442,6 +474,10 @@
         };
         
         var line_options = {
+        	chartArea: { 
+        		left: 90,
+        		width: 380
+        	},
         	colors: ['#eb6750', '#4b8cc4'],
         	hAxis: {title: 'ปี (ค.ศ.)'},
         	vAxis: {title: 'จำนวน'},
@@ -522,8 +558,8 @@
 		var valueGeometry = new Timeplot.DefaultValueGeometry({
 			gridColor: "#000000",
 			axisLabelsPlacement: "left",
-			min: 0,
-			max: 1
+			min: 32000000,
+			max: 44000000
 		});
 		
 		var plotInfo = [
@@ -617,13 +653,18 @@
 		อัตราการว่างงานของแต่ละประเทศในปี 2012<div id="world_stat"> </div>
 	</div>
 	<div class="text_block" style="margin-bottom: 10px;">
-		ประเทศไทยเมื่อเทียบกับประเทศอื่นภายในโลกแล้วถือว่าเป็นประเทศที่มีอัตราการว่างงานต่ำเป็นอันดับต้นๆ
+		ประเทศไทยเมื่อเทียบกับประเทศอื่นภายในโลกแล้วถือว่าเป็นประเทศที่มีอัตราการว่างงานต่ำเป็นอันดับต้นๆ 
+		โดยมีอัตราการว่างงานเป็น 0.7% ในปี 2012 จากการสำรวจของ IMF [1] 
 	</div>
 	<div class="inlined_box">
 		<div id="infovis"> </div>
 	</div>
-	<div class="text_block" style="display: inline-block; padding-left: 16px; width: 200px;">
-		จำนวนผู้ว่างงาน sfsdflsdhfl ksdjflksdjf lkjsdlkf jksdlfj lksd jfklsdjf klsdjf klsd flksdj flks lfkj sdlkf jsdlfj
+	<div class="inlined_box" style="font-size: 100%;">
+	<div class="text_block" style="display: inline-block; padding-left: 16px; width: 250px;">
+		จำนวนผู้ว่างงานของไทยอยู่ที่ 0.25 ล้านคนจากการสำรวจโดยสำนักงานสถิติแห่งชาติในปี 2012 [2] ดังในแผนภาพข้างซ้ายมือ 
+		ซึ่งผู้อยู่ในวัยทำงานหมายถึงผู้ที่มีอายุเกิน 15 ปี แต่ไม่ใช่ทุกคนที่จะอยู่ในกำลังแรงงาน เช่น คนที่ทำงานที่บ้าน เรียนหนังสือ ชรา หรือพิการ
+		จะไม่นับเป็นผู้อยู่ในกำลังแรงงาน ผู้ว่างงานจะหมายถึงเฉพาะผู้อยู่ในกำลังแรงงาน ที่ยังไม่มีงานทำ และไม่ได้รอฤดูกาลที่จะทำงาน
+	</div>
 	</div>
 </div>
 
@@ -641,7 +682,9 @@
 		ผู้รอฤดูกาล<div id="season_inactive_trend" class="overall_trend"> </div>
 	</div>
 	<div class="text_block">
-		แนวโน้มการมีงานทำของคนไทยเพิ่มขึ้นทุกปี เมื่อดูจากเปอร์เซ็นต์ของผู้มีงานทำทั้งหมด แต่ในช่วงสองปีที่ผ่านมาเปอร์เซ็นต์ของผู้มีงานทำเริ่มที่จะไม่เพิ่มขึ้น ในอนาคตจะเป็นอย่างไรต่อไป? 
+		แนวโน้มการมีงานทำของคนไทยเพิ่มขึ้นทุกปี เมื่อดูจากเปอร์เซ็นต์ของผู้มีงานทำทั้งหมดที่ผ่านมา 
+		แต่ในช่วงสองปีหลังเปอร์เซ็นต์ของผู้มีงานทำเริ่มที่จะไม่เพิ่มขึ้น และจำนวนผู้ว่างงานก็ลดลงน้อยลง
+		ในอนาคตแนวโน้มการมีงานทำจะเป็นอย่างไร? 
 	</div>
 </div>
   	
@@ -660,7 +703,8 @@
 		<div id="male_female_ratio_chart" class="sex_trend"> </div>
 	</div>
 	<div class="text_block">
-		ไม่ใช่แค่เฉพาะจำนวน แต่เมื่อคิดเป็นเปอร์เซ็นต์แล้วชายไทยยังคงมีเปอร์เซ็นต์การรมีงานทำมากกว่าผู้หญิง ทั้งนี้อาจเป็นเพราะ... 
+		จำนวนผู้มีงานทำและเปอร์เซ็นต์ผู้มีงานทำที่เป็นเพศชายมีมากกว่าเพศหญิงตลอดเวลา 
+		เนื่องจากสังคมไทยเป็นสังคมที่ผู้ชายจะออกไปทำงาน และผู้หญิงจำนวนมากอยู่บ้านเลี้ยงลูก
 	</div>
 </div>
 
@@ -673,9 +717,14 @@
 	<div class="inlined_box">
 		เปรียบเทียบเปอร์เซ็นต์การว่างงานในปี 2012<div id="unemploy_by_degree_chart" class="degree_trend"> </div>
 	</div>
+	<div class="text_block">
+		อุดมศึกษาซึ่งหมายถึงการศึกษาในระดับชั้นปริญญาตรี โท และเอก ได้กลายเป็นวุฒิการศึกษาที่มีจำนวนผู้ว่างงานมากสุด แซงหน้ามัธยมต้น ประถมศึกษา 
+		ในช่วง 3 และ 1 ปีที่ผ่านมา ซึ่งอาจเป็นเพราะจำนวนคนที่เข้าศึกษาต่อในระดับอุดมศึกษามีมากขึ้น อาชีวศึกษาเป็นวุฒิการศึกษาที่มีการว่างงานน้อยที่สุดมาโดยตลอด
+		และในปัจจุบันยังมีความต้องการคนจบอีกจำนวนมาก ซึ่งไม่เพียงพอต่อความต้องการของตลาด
+	</div>
 </div>
 
-<h2>Timeline จำนวนผู้มีงานทำ</h2>
+<h2>Timeline จำนวนผู้มีงานทำ และเหตุการณ์สำคัญ</h2>
 <div class="content_block">
 	<div id="unemploy_timeplot" style="height: 180px;"> </div>
 </div>
@@ -696,7 +745,9 @@
 		<div id="relation_text2">เปรียบเทียบผู้มีงานทำและ</div><div id="relation_linechart"> </div>
 	</div>
 	<div class="text_block">
-		จำนวนผู้มีงานทำมีความสัมพันธ์เป็นอย่างมากกับจำนวนลูกจ้าง และจำนวนโรงงาน ในขณะที่เมื่อเทียบกับจำนวนการจะเทียนนิติบุคคล แล้ว GDP ล่ะว่าไง?
+		จำนวนผู้มีงานทำมีความสัมพันธ์เป็นอย่างมากกับจำนวนลูกจ้าง และจำนวนโรงงาน 
+		ในขณะที่เมื่อเทียบกับจำนวนการจดทะเบียนนิติบุคคลความสัมพันธ์เป็นไปในทิศทางเดียวกัน แต่ไม่มีความสัมพันธ์กันมากนัก 
+		และ GDP มีการเติบโตไปพร้อมกับจำนวนผู้มีงานทำ
 	</div>
 </div>
 
@@ -719,13 +770,12 @@
 	<div class="inlined_box">
 		เปรียบเทียบเปอร์เซ็นต์การว่างงานของแต่ละวุฒิการศึกษา<div id="unemploy_degree"> </div>
 	</div>
+	<div class="comment_block">** ปี 2010 บางจังหวัดไม่มีข้อมูล เนื่องจากไม่ได้ทำการสำรวจ</div>
 </div>
 
 <div class="reference_block">
-	<a href="" target="_blank">Unemployment Rates in Countries Around the World</a><br />
-	ที่มา: การสำรวจภาวะการทำงานของประชากร  สำนักงานสถิติแห่งชาติ กระทรวงเทคโนโลยีสารสนเทศและการสื่อสาร<br /> 
-	รวบรวมโดย: สำนักสถิติพยากรณ์ สำนักงานสถิติแห่งชาติ (<a href="http://service.nso.go.th/nso/nsopublish/BaseStat/basestat.html" target="_blank">NSO</a>)<br />
-	
+	ที่มา[1]: <a href="http://www.gfmag.com/component/content/article/119-economic-data/12384-worlds-unemployment-ratescom.html#axzz2h68KBJMl" target="_blank">Unemployment Rates in Countries Around the World</a><br />
+	ที่มา[2]: <a href="http://service.nso.go.th/nso/nsopublish/BaseStat/basestat.html" target="_blank">การสำรวจภาวะการทำงานของประชากร  สำนักงานสถิติแห่งชาติ กระทรวงเทคโนโลยีสารสนเทศและการสื่อสาร</a><br /> 
 </div>
 
 </div>

@@ -103,7 +103,7 @@ a:hover {
 
 .sex_trend {
 	width: 428px; 
-	height: 180px;
+	height: 200px;
 }
 
 .degree_trend {
@@ -181,6 +181,17 @@ a:hover {
 	text-align: center;
 }
 
+.timeplot-grid-label {
+	font-family: wdbangna;
+	color: #ffffff;
+	font-size: 200%;
+}
+
+.comment_block {
+	font-family: wdbangna;
+	font-size: 85%;
+}
+
 #unemploy_timeplot {
 	font-family: wdbangna;
 	color: #000000;
@@ -196,21 +207,25 @@ a:hover {
 }
 
 #relation_chart {
+	background: #ffffff;
 	width: 360px;
 	height: 280px;
 }
 
 #relation_linechart {
+	background: #ffffff;
 	width: 494px;
 	height: 280px;
 }
 
 #unemploy_map {
+	background: #ffffff;
 	width: 500px;
 	height: 400px;
 }
 
 #unemploy_degree {
+	background: #ffffff;
 	width: 352px;
 	height: 400px;
 }
