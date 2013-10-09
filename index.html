@@ -21,7 +21,7 @@
 
 	function drawWorldUnemploymentRate() {
 		var data = google.visualization.arrayToDataTable([
-					['ประเทศ', 'อัตราการว่างงาน',],
+					['ประเทศ', 'อัตราการว่างงาน (เปอร์เซ็นต์)',],
 					['สเปน', 24.9],
 					['อิตาลี', 10.6],
 					['ฝรั่งเศษ', 10.1],
@@ -37,29 +37,24 @@
 					['เกาหลี', 3.3],
 					['สิงคโปร์', 2.1],
 					['ไทย', 0.7],
-					['อุซเบกิสถาน', 0.2],
-					
+					['อุซเบกิสถาน', 0.2]
 		]);
-		
-		// BarGraph API Documents
-		// https://google-developers.appspot.com/chart/interactive/docs/gallery/barchart
 		
 		var options = {
 			legend: {
 				position: 'top'
 			},
-			//title: 'Company Performance',
 			//vAxis: {title: 'Year',  titleTextStyle: {color: 'red'}}
 			colors: ['#eb6750'],
 			legend: {
 				position: 'none',
 			},
 			hAxis: {
-				title: 'ประเทศ',
+				//title: 'ประเทศ',
 				slantedText: true
 			},
 			vAxis: {
-				title: 'อัตราการว่างงาน'
+				title: 'อัตราการว่างงาน (เปอร์เซ็นต์)'
 			}
         };
 
@@ -138,14 +133,14 @@
 		
 		var data = google.visualization.arrayToDataTable([
 					['ปี (ค.ศ.)', 'ชาย',      'หญิง'],
-					['05', 19334658.5,  15922514.25],
-					['06', 19416435.5,  16269094],
-					['07', 19695739.25, 16553714.75],
-					['08', 20092424,    16924188],
-					['09', 20489253.25, 17217068],
-					['10', 20652483.195375, 17384858.856125],
-					['11', 20814282.4875, 17650384.34],
-					['12', 21129083.6325, 17810046.35]
+					['05', 19.3346585,  15.92251425],
+					['06', 19.4164355,  16.269094],
+					['07', 19.69573925, 16.55371475],
+					['08', 20.092424,    16.924188],
+					['09', 20.48925325, 17.217068],
+					['10', 20.652483195375, 17.384858856125],
+					['11', 20.8142824875, 17.65038434],
+					['12', 21.1290836325, 17.81004635]
 		]);
 
 		var options = {
@@ -155,10 +150,10 @@
 				position: 'none'
 			},
 			vAxis: {
-				title: 'จำนวน',
-				minValue: 10000000,
-				maxValue: 25000000,
-				count: 5000000
+				title: 'จำนวน (ล้านคน)',
+				//minValue: 10000000,
+				//maxValue: 25000000,
+				//count: 5000000
 			},
 			hAxis: {
 				title: 'ปี (ค.ศ.)',
@@ -171,7 +166,7 @@
 				}*/
 			},
 			chartArea: {
-				width: 315
+				width: 300
 			}
 		};
 
@@ -197,18 +192,21 @@
 			legend: {
 				position: 'none'
 			},
+			vAxis: {
+				title: 'เปอร์เซ็นต์ (%)'
+			},
 			hAxis: {
 				title: 'ปี (ค.ศ.)',
-				titleTextStyle: {
+				/*titleTextStyle: {
 					color: 'black',
-  					//fontName: <string>,
-					//fontSize: <number>,
-					//bold: <boolean>,
+  					fontName: <string>,
+					fontSize: <number>,
+					bold: <boolean>,
 					italic: false 
-				}
+				}*/
 			},
 			chartArea: {
-				width: 305
+				width: 300
 			}
 		};
 
@@ -228,7 +226,7 @@
 		unemploy_data['2555'] = new Array(22, 22.8, 14.9, 5.1, 10, 25.2);
 
 		var data = google.visualization.arrayToDataTable([
-					['วุฒิการศึกษา'        , 'Percent',],
+					['วุฒิการศึกษา'        , 'เปอร์เซ็นต์ (%)',],
 					['ประถม/ต่ำกว่า' , unemploy_data[year][0]],
 					['มัธยมต้น'           , unemploy_data[year][1]],
 					['มัธยมปลาย'         , unemploy_data[year][2]],
@@ -244,7 +242,6 @@
 			legend: {
 				position: 'top'
 			},
-			//title: 'Company Performance',
 			//vAxis: {title: 'Year',  titleTextStyle: {color: 'red'}}
 			colors: ['#eb6750'],
 			legend: {
@@ -262,12 +259,17 @@
 			}
         };
         
+        var chart;
         if (div_id == 'unemploy_degree') {
-        	options.hAxis.ticks = [0, 5, 10, 15, 20, 25, 30, 35, 40];
+        	options.vAxis.ticks = [0, 5, 10, 15, 20, 25, 30, 35, 40];
+        	chart = new google.visualization.ColumnChart(document.getElementById(div_id));
+        	chart.draw(data, options);
+        } else {
+        	chart = new google.visualization.BarChart(document.getElementById(div_id));
+        	chart.draw(data, options);
         }
-
-        var chart = new google.visualization.BarChart(document.getElementById(div_id));
-        chart.draw(data, options);
+        
+        
 
 	}
 	
@@ -285,6 +287,12 @@
 		]);
 		
 		var options = {
+			vAxis: { title: 'เปอร์เซ็นต์ (%)' },
+			hAxis: { title: 'ปี (ค.ศ.)' },
+			legend: {
+				position: 'right',
+				alignment: 'center'
+			}
 		};
 
 		var chart = new google.visualization.LineChart(document.getElementById('unemploy_by_degree_trend'));
@@ -331,56 +339,69 @@
 					[ 38.939129975, 134830]				// 2012
         ]);
         
-        /*var data_gdp = google.visualization.arrayToDataTable([
-					['ผู้มีงานทำ', 'GDP'],
-					[ 34728811.25, 120145],		// 2004
-					[ 35257172.75, 122312],			// 2005
-					[ 35685529.25, 125347],			// 2006
-					[ 36249453.5, 126804],		// 2007
-					[ 37016612, 126658],				// 2008
-					[ 37706321, 128517],					// 2009
-					[ 38037342.3015, 129617],				// 2010
-					[ 38464666.83, 132104],				// 2011
-					[ 38939129.975, 134830]				// 2012
-        ]);*/
+        var data_gdp = google.visualization.arrayToDataTable([
+					['ผู้มีงานทำ (ล้านคน)', 'GDP'],
+					[ 34.72881125, 6244354],		// 2004
+					[ 35.25717275, 6811885],			// 2005
+					[ 35.68552925, 7497518],			// 2006
+					[ 36.2494535, 8142328],		// 2007
+					[ 37.016612, 8775587],				// 2008
+					[ 37.706321, 8656058],					// 2009
+					[ 38.0373423015, 9607293],				// 2010
+					[ 38.46466683, 10015825]				// 2011
+					//[ 38939129.975, ]				// 2012
+        ]);
        
        	var data_line_employee = google.visualization.arrayToDataTable([
 					['ปี (ค.ศ.)', 'ผู้มีงานทำ (พันคน)', 'จำนวนลูกจ้าง (พันคน)'],
-					[ 2004, 34728.81125,  15728.63],		// 2004
-					[ 2005, 35257.17275,  15770.55],			// 2005
-					[ 2006, 35685.52925,  15683.05],			// 2006
-					[ 2007, 36249.4535, 16108.21],		// 2007
-					[ 2008, 37016.612,  16082.15],				// 2008
-					[ 2009, 37706.321,  16695.12],					// 2009
-					[ 2010, 38037.3423015, 16332.86],				// 2010
-					[ 2011, 38464.66683, 16473.11],				// 2011
-					[ 2012, 38939.129975, 16821.37]				// 2012
+					[ '04', 34728.81125,  15728.63],		// 2004
+					[ '05', 35257.17275,  15770.55],			// 2005
+					[ '06', 35685.52925,  15683.05],			// 2006
+					[ '07', 36249.4535, 16108.21],		// 2007
+					[ '08', 37016.612,  16082.15],				// 2008
+					[ '09', 37706.321,  16695.12],					// 2009
+					[ '10', 38037.3423015, 16332.86],				// 2010
+					[ '11', 38464.66683, 16473.11],				// 2011
+					[ '12', 38939.129975, 16821.37]				// 2012
         ]);
         
         var data_line_register = google.visualization.arrayToDataTable([
 					['ปี (ค.ศ.)', 'ผู้มีงานทำ (พันคน)', 'จำนวนการจดทะเบียนบริษัทใหม่'],
-					[ 2004, 34728.81125, 47676],		// 2004
-					[ 2005, 35257.17275, 49700],			// 2005
-					[ 2006, 35685.52925, 47011],			// 2006
-					[ 2007, 36249.4535, 40835],		// 2007
-					[ 2008, 37016.612, 42804],				// 2008
-					[ 2009, 37706.321, 41318],					// 2009
-					[ 2010, 38037.3423015, 50891],				// 2010
-					[ 2011, 38464.66683, 55765],				// 2011
-					[ 2012, 38939.129975, 64250]				// 2012
+					[ '04', 34728.81125, 47676],		// 2004
+					[ '05', 35257.17275, 49700],			// 2005
+					[ '06', 35685.52925, 47011],			// 2006
+					[ '07', 36249.4535, 40835],		// 2007
+					[ '08', 37016.612, 42804],				// 2008
+					[ '09', 37706.321, 41318],					// 2009
+					[ '10', 38037.3423015, 50891],				// 2010
+					[ '11', 38464.66683, 55765],				// 2011
+					[ '12', 38939.129975, 64250]				// 2012
         ]);
         
         var data_line_factory = google.visualization.arrayToDataTable([
 					['ปี (ค.ศ.)', 'ผู้มีงานทำ (ร้อยคน)', 'จำนวนโรงงานอุตสาหกรรม'],
-					[ 2004, 347288.1125, 120145],		// 2004
-					[ 2005, 352571.7275, 122312],			// 2005
-					[ 2006, 356855.2925, 125347],			// 2006
-					[ 2007, 362494.535, 126804],		// 2007
-					[ 2008, 370166.12, 126658],				// 2008
-					[ 2009, 377063.21, 128517],					// 2009
-					[ 2010, 380373.423015, 129617],				// 2010
-					[ 2011, 384646.6683, 132104],				// 2011
-					[ 2012, 389391.29975, 134830]				// 2012
+					[ '04', 347288.1125, 120145],		// 2004
+					[ '05', 352571.7275, 122312],			// 2005
+					[ '06', 356855.2925, 125347],			// 2006
+					[ '07', 362494.535, 126804],		// 2007
+					[ '08', 370166.12, 126658],				// 2008
+					[ '09', 377063.21, 128517],					// 2009
+					[ '10', 380373.423015, 129617],				// 2010
+					[ '11', 384646.6683, 132104],				// 2011
+					[ '12', 389391.29975, 134830]				// 2012
+        ]);
+        
+        var data_line_gdp = google.visualization.arrayToDataTable([
+					['ปี (ค.ศ.)', 'ผู้มีงานทำ (สิบคน)', 'GDP'],
+					[ '04', 3472881.125, 6244354],		// 2004
+					[ '05', 3557172.75, 6811885],			// 2005
+					[ '06', 3568552.925, 7497518],			// 2006
+					[ '07', 3624945.35, 8142328],		// 2007
+					[ '08', 3701661.2, 8775587],				// 2008
+					[ '09', 3770632.1, 8656058],					// 2009
+					[ '10', 3803734.23015, 9607293],				// 2010
+					[ '11', 3846466.683, 10015825]				// 2011
+					//[ 38939129.975, ]				// 2012
         ]);
         
         var data, linedata;
@@ -390,17 +411,26 @@
         	vaxis_title = 'จำนวนลูกจ้าง (พันคน)';
         	data = data_employee;
         	linedata = data_line_employee;
+        	document.getElementById('relation_text1').innerHTML = 'ความสัมพันธ์ของผู้มีงานทำและจำนวนลูกจ้าง';
+        	document.getElementById('relation_text2').innerHTML = 'เปรียบเทียบผู้มีงานทำและจำนวนลูกจ้าง';
         } else if (variablename == 'register') {
         	vaxis_title = 'จำนวนการจดทะเบียนนิติบุคคล';
         	data = data_register;
         	linedata = data_line_register;
+        	document.getElementById('relation_text1').innerHTML = 'ความสัมพันธ์ของผู้มีงานทำและจำนวนการจดทะเบียนนิติบุคคล';
+        	document.getElementById('relation_text2').innerHTML = 'เปรียบเทียบผู้มีงานทำและจำนวนการจดทะเบียนนิติบุคคล';
         } else if (variablename == 'factory') {
         	vaxis_title = 'จำนวนโรงงานอุตสาหกรรม';
         	data = data_factory;
         	linedata = data_line_factory;
+        	document.getElementById('relation_text1').innerHTML = 'ความสัมพันธ์ของผู้มีงานทำและจำนวนโรงงานอุตสาหกรรม';
+        	document.getElementById('relation_text2').innerHTML = 'เปรียบเทียบผู้มีงานทำและจำนวนโรงงานอุตสาหกรรม';
         } else /* gdp */ {
-        	vaxis_title = '';
-        	//data = ;
+        	vaxis_title = 'GDP';
+        	data = data_gdp;
+        	linedata = data_line_gdp;
+        	document.getElementById('relation_text1').innerHTML = 'ความสัมพันธ์ของผู้มีงานทำและ GDP';
+        	document.getElementById('relation_text2').innerHTML = 'เปรียบเทียบผู้มีงานทำและ GDP';
         }
         
         var options = {
@@ -412,6 +442,9 @@
         };
         
         var line_options = {
+        	colors: ['#eb6750', '#4b8cc4'],
+        	hAxis: {title: 'ปี (ค.ศ.)'},
+        	vAxis: {title: 'จำนวน'},
         	legend: {
 				position: 'top',
 			},
@@ -479,7 +512,7 @@
 	var timeplot;
 	function initTimeplotOnLoad() {
 		var unemployrateSource = new Timeplot.DefaultEventSource();
-		var eventSource = new Timeplot.DefaultEventSource();
+		//var eventSource = new Timeplot.DefaultEventSource();
 		
 		var timeGeometry = new Timeplot.DefaultTimeGeometry({
 			gridColor: new Timeplot.Color("#000000"),
@@ -499,21 +532,21 @@
 				dataSource: new Timeplot.ColumnSource(unemployrateSource,1),
 				timeGeometry: timeGeometry,
 				valueGeometry: valueGeometry,
-				lineColor: "#ff0000",
-				fillColor: "#cc8080",
+				lineColor: "#eb6750",
+				fillColor: "#eb6750",
 				showValues: true
-			}),
+			})/*,
   			Timeplot.createPlotInfo({
     			id: "Event",
     			timeGeometry: timeGeometry,
     			eventSource: eventSource2,
     			lineColor: "#03212E"
-  			})
+  			})*/
 		];
 
 		timeplot = Timeplot.create(document.getElementById("unemploy_timeplot"), plotInfo);
 		timeplot.loadText("unemployrate_2004-2012.txt", ",", unemployrateSource);
-		timeplot.loadXML("event.xml", eventSource);
+		//timeplot.loadXML("event.xml", eventSource);
 	}
 	
 	var resizeTimerID = null;
@@ -578,19 +611,20 @@
 	<div class="header_text">สถิติการว่างงานในประเทศไทย</div>
 </div>
 
-<h2>สถานการณ์ปัจุบัน</h2>
-<div class="content_block">
+<h2>สถานการณ์ปัจจุบัน</h2>
+<div class="content_block" style="vertical-align: text-top;">
 	<div class="inlined_box" style="width: 880px;">
 		อัตราการว่างงานของแต่ละประเทศในปี 2012<div id="world_stat"> </div>
 	</div>
-	<div class="text_block">
+	<div class="text_block" style="margin-bottom: 10px;">
 		ประเทศไทยเมื่อเทียบกับประเทศอื่นภายในโลกแล้วถือว่าเป็นประเทศที่มีอัตราการว่างงานต่ำเป็นอันดับต้นๆ
 	</div>
-	<div id="infovis"> </div>
-	<div class="text_block">
-		จำนวนผู้ว่างงาน 
+	<div class="inlined_box">
+		<div id="infovis"> </div>
 	</div>
-	http://www.gfmag.com/component/content/article/119-economic-data/12384-worlds-unemployment-ratescom.html#axzz2h68KBJMl
+	<div class="text_block" style="display: inline-block; padding-left: 16px; width: 200px;">
+		จำนวนผู้ว่างงาน sfsdflsdhfl ksdjflksdjf lkjsdlkf jksdlfj lksd jfklsdjf klsdjf klsd flksdj flks lfkj sdlkf jsdlfj
+	</div>
 </div>
 
 <h2>แนวโน้มการว่างงาน</h2>
@@ -615,14 +649,14 @@
 
 <div class="content_block">
 	<div class="inlined_box">
-		จำนวนผู้มีงานทำ <img src="img/male.png" /><div style="color: #96d4e1; display: inline-block">ชาย</div> - 
-		<img src="img/female.png" /><div style="color: #ef8eb7; display: inline-block">หญิง</div>
+		จำนวนผู้มีงานทำ <img src="img/male.png" /><div style="display: inline-block">ชาย</div> - 
+		<img src="img/female.png" /><div style="display: inline-block">หญิง</div>
 		<div id="male_female_quan_chart" class="sex_trend"> </div>
 	</div>
 	<div class="inlined_box" style="width: 16px;"> </div>
 	<div class="inlined_box">
-		เปอร์เซ็นต์ผู้มีงานทำ  <img src="img/male.png" /><div style="color: #96d4e1; display: inline-block">ชาย</div> - 
-		<img src="img/female.png" /><div style="color: #ef8eb7; display: inline-block">หญิง</div>
+		เปอร์เซ็นต์ผู้มีงานทำ  <img src="img/male.png" /><div style="display: inline-block">ชาย</div> - 
+		<img src="img/female.png" /><div style="display: inline-block">หญิง</div>
 		<div id="male_female_ratio_chart" class="sex_trend"> </div>
 	</div>
 	<div class="text_block">
@@ -655,11 +689,11 @@
 </div>
 <div class="content_block">
 	<div class="inlined_box">
-		ความสัมพันธ์ของผู้มีงานทำและ<div id="relation_chart"> </div>
+		<div id="relation_text1">ความสัมพันธ์ของผู้มีงานทำและ</div><div id="relation_chart"> </div>
 	</div>
 	<div class="inlined_box" style="width: 16px;"> </div>
 	<div class="inlined_box">
-		เปรียบเทียบผู้มีงานทำและ<div id="relation_linechart"> </div>
+		<div id="relation_text2">เปรียบเทียบผู้มีงานทำและ</div><div id="relation_linechart"> </div>
 	</div>
 	<div class="text_block">
 		จำนวนผู้มีงานทำมีความสัมพันธ์เป็นอย่างมากกับจำนวนลูกจ้าง และจำนวนโรงงาน ในขณะที่เมื่อเทียบกับจำนวนการจะเทียนนิติบุคคล แล้ว GDP ล่ะว่าไง?
@@ -688,8 +722,10 @@
 </div>
 
 <div class="reference_block">
+	<a href="" target="_blank">Unemployment Rates in Countries Around the World</a><br />
 	ที่มา: การสำรวจภาวะการทำงานของประชากร  สำนักงานสถิติแห่งชาติ กระทรวงเทคโนโลยีสารสนเทศและการสื่อสาร<br /> 
-	รวบรวมโดย: สำนักสถิติพยากรณ์ สำนักงานสถิติแห่งชาติ (<a href="http://service.nso.go.th/nso/nsopublish/BaseStat/basestat.html" target="_blank">NSO</a>)
+	รวบรวมโดย: สำนักสถิติพยากรณ์ สำนักงานสถิติแห่งชาติ (<a href="http://service.nso.go.th/nso/nsopublish/BaseStat/basestat.html" target="_blank">NSO</a>)<br />
+	
 </div>
 
 </div>
