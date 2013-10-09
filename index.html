@@ -512,7 +512,7 @@
 	var timeplot;
 	function initTimeplotOnLoad() {
 		var unemployrateSource = new Timeplot.DefaultEventSource();
-		//var eventSource = new Timeplot.DefaultEventSource();
+		var eventSource = new Timeplot.DefaultEventSource();
 		
 		var timeGeometry = new Timeplot.DefaultTimeGeometry({
 			gridColor: new Timeplot.Color("#000000"),
@@ -535,18 +535,18 @@
 				lineColor: "#eb6750",
 				fillColor: "#eb6750",
 				showValues: true
-			})/*,
+			}),
   			Timeplot.createPlotInfo({
     			id: "Event",
     			timeGeometry: timeGeometry,
-    			eventSource: eventSource2,
+    			eventSource: eventSource,
     			lineColor: "#03212E"
-  			})*/
+  			})
 		];
 
 		timeplot = Timeplot.create(document.getElementById("unemploy_timeplot"), plotInfo);
 		timeplot.loadText("unemployrate_2004-2012.txt", ",", unemployrateSource);
-		//timeplot.loadXML("event.xml", eventSource);
+		timeplot.loadXML("event.xml", eventSource);
 	}
 	
 	var resizeTimerID = null;

@@ -181,6 +181,16 @@ a:hover {
 	text-align: center;
 }
 
+#unemploy_timeplot {
+	font-family: wdbangna;
+	color: #000000;
+}
+
+.simileAjax-bubble-container {
+	font-family: wdbangna;
+	color: #000000;
+}
+
 #world_stat {
 	height: 290px;
 }
