@@ -174,7 +174,7 @@ function init(){
         node.removeData('border');
         icicle.fx.plot();
       },
-      onClick: function(node){
+      /*onClick: function(node){
         if (node) {
           //hide tips and selections
           icicle.tips.hide();
@@ -191,7 +191,7 @@ function init(){
           this.onMouseLeave(icicle.events.hovered);
         //perform the out animation
         icicle.out();
-      }
+      }*/
     },
     // Add canvas label styling
     Label: {
