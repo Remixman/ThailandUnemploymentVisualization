@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 <title>สถิติการว่างงานในประเทศไทย</title>
-
+  	
 <link type="text/css" rel="stylesheet" href="css/base.css" />
 <link type="text/css" rel="stylesheet" href="css/Icicle.css" />
 <link type="text/css" rel="stylesheet" href="css/infostyle.css" />
@@ -146,7 +146,6 @@
 		]);
 
 		var options = {
-			//backgroundColor: '#aaaaaa',
 			colors: ['#96d4e1', '#ef8eb7'],
 			legend: {
 				position: 'none'
@@ -159,13 +158,6 @@
 			},
 			hAxis: {
 				title: 'ปี (ค.ศ.)',
-				/*titleTextStyle: {
-					color: 'black',
-  					fontName: <string>,
-					fontSize: <number>,
-					bold: <boolean>,
-					italic: false 
-				}*/
 			},
 			chartArea: {
 				top: 30,
@@ -201,13 +193,6 @@
 			},
 			hAxis: {
 				title: 'ปี (ค.ศ.)',
-				/*titleTextStyle: {
-					color: 'black',
-  					fontName: <string>,
-					fontSize: <number>,
-					bold: <boolean>,
-					italic: false 
-				}*/
 			},
 			chartArea: {
 				top: 30,
@@ -265,30 +250,16 @@
 			}
         };
         
-        var chart;
-        if (div_id == 'unemploy_degree') {
-        	options.vAxis.ticks = [0, 5, 10, 15, 20, 25, 30, 35, 40];
-        	options.hAxis.slantedText = true;
-        	options.chartArea = { 
-        		top: 35,
-        		width: 260,
-        		height: 285
-        	};
-        	chart = new google.visualization.ColumnChart(document.getElementById(div_id));
-        	chart.draw(data, options);
-        } else {
-        	options.chartArea = { 
-        		left: 90,
-        		top: 40,
-        		width: 297,
-        		height: 200
-        	};
-        	chart = new google.visualization.BarChart(document.getElementById(div_id));
-        	chart.draw(data, options);
-        }
-        
-        
 
+        options.vAxis.ticks = [0, 5, 10, 15, 20, 25, 30, 35, 40];
+        options.hAxis.slantedText = true;
+        options.chartArea = { 
+        	top: 35,
+        	width: 260,
+        	height: 285
+        };
+        var chart = new google.visualization.ColumnChart(document.getElementById(div_id));
+        chart.draw(data, options);
 	}
 	
 	function drawUnemployedByDegreeTrendChart() {
@@ -434,25 +405,25 @@
         	vaxis_title = 'จำนวนลูกจ้าง (พันคน)';
         	data = data_employee;
         	linedata = data_line_employee;
-        	document.getElementById('relation_text1').innerHTML = 'ความสัมพันธ์ของผู้มีงานทำและจำนวนลูกจ้าง';
+        	document.getElementById('relation_text1').innerHTML = 'ผู้มีงานทำ V.S. จำนวนลูกจ้าง';
         	document.getElementById('relation_text2').innerHTML = 'เปรียบเทียบผู้มีงานทำและจำนวนลูกจ้าง';
         } else if (variablename == 'register') {
         	vaxis_title = 'จำนวนการจดทะเบียนนิติบุคคล';
         	data = data_register;
         	linedata = data_line_register;
-        	document.getElementById('relation_text1').innerHTML = 'ความสัมพันธ์ของผู้มีงานทำและจำนวนการจดทะเบียนนิติบุคคล';
+        	document.getElementById('relation_text1').innerHTML = 'ผู้มีงานทำ V.S. จำนวนการจดทะเบียนนิติบุคคล';
         	document.getElementById('relation_text2').innerHTML = 'เปรียบเทียบผู้มีงานทำและจำนวนการจดทะเบียนนิติบุคคล';
         } else if (variablename == 'factory') {
         	vaxis_title = 'จำนวนโรงงานอุตสาหกรรม';
         	data = data_factory;
         	linedata = data_line_factory;
-        	document.getElementById('relation_text1').innerHTML = 'ความสัมพันธ์ของผู้มีงานทำและจำนวนโรงงานอุตสาหกรรม';
+        	document.getElementById('relation_text1').innerHTML = 'ผู้มีงานทำ V.S. จำนวนโรงงานอุตสาหกรรม';
         	document.getElementById('relation_text2').innerHTML = 'เปรียบเทียบผู้มีงานทำและจำนวนโรงงานอุตสาหกรรม';
         } else /* gdp */ {
         	vaxis_title = 'GDP';
         	data = data_gdp;
         	linedata = data_line_gdp;
-        	document.getElementById('relation_text1').innerHTML = 'ความสัมพันธ์ของผู้มีงานทำและ GDP';
+        	document.getElementById('relation_text1').innerHTML = 'ผู้มีงานทำ V.S. GDP';
         	document.getElementById('relation_text2').innerHTML = 'เปรียบเทียบผู้มีงานทำและ GDP';
         }
         
@@ -514,7 +485,7 @@
 			},
 			colorAxis: {
 				minValue: 0.0,
-				maxValue: 0.039,
+				maxValue: 4.0,
 				colors: ['#ffffff', '#eb6750']
 			}
 		};
@@ -531,7 +502,6 @@
 		drawMaleFemaleQuantityChart();
 		drawMaleFemaleRatioChart();
 		
-		drawUnemployedByDegreeChart('2555', 'unemploy_by_degree_chart');
 		drawUnemployedByDegreeTrendChart();
 		
 		drawRelationChart('employee');
@@ -555,8 +525,8 @@
 		var valueGeometry = new Timeplot.DefaultValueGeometry({
 			gridColor: "#000000",
 			axisLabelsPlacement: "left",
-			min: 32000000,
-			max: 44000000
+			min: 32,
+			max: 44
 		});
 		
 		var plotInfo = [
@@ -565,6 +535,7 @@
 				dataSource: new Timeplot.ColumnSource(unemployrateSource,1),
 				timeGeometry: timeGeometry,
 				valueGeometry: valueGeometry,
+				roundValues: false,
 				lineColor: "#eb6750",
 				fillColor: "#eb6750",
 				showValues: true
@@ -578,7 +549,7 @@
 		];
 
 		timeplot = Timeplot.create(document.getElementById("unemploy_timeplot"), plotInfo);
-		timeplot.loadText("unemployrate_2004-2012.txt", ",", unemployrateSource);
+		timeplot.loadText("unemployrate.txt", ",", unemployrateSource);
 		timeplot.loadXML("event.xml", eventSource);
 	}
 	
@@ -664,7 +635,7 @@
 		<div style="font-size: 90%">หมายเหตุ: สัดส่วนของผู้ว่างงานและกำลังแรงงานที่รอฤดูกาลในภาพ ถูกเพิ่มให้มากเกินอัตราส่วนเดิม เพื่อให้สามารถมองได้ง่าย</div>
 	</div>
 	</div>
-	<div class="text_block" style="font-size: 150%; font-weight: 800;">ทำไมประเทศไทยถึงมีอัตราการว่างงานที่ต่ำ ?</div>
+	<div class="text_block" style="font-size: 180%; font-weight: 700;">ทำไมประเทศไทยถึงมีอัตราการว่างงานที่ต่ำ ?</div>
 </div>
 
 <h2>แนวโน้มการว่างงาน</h2>
@@ -715,9 +686,6 @@
 		แนวโน้มการว่างงานของแต่ละวุฒิการศึกษา<div id="unemploy_by_degree_trend" class="degree_trend"> </div>
 	</div>
 	<div class="inlined_box" style="width: 16px;"> </div>
-	<div class="inlined_box">
-		เปรียบเทียบเปอร์เซ็นต์การว่างงานในปี 2012<div id="unemploy_by_degree_chart" class="degree_trend"> </div>
-	</div>
 	<div class="text_block">
 		อุดมศึกษาซึ่งหมายถึงการศึกษาในระดับชั้นปริญญาตรี โท และเอก ได้กลายเป็นวุฒิการศึกษาที่มีจำนวนผู้ว่างงานมากสุด แซงหน้ามัธยมต้น ประถมศึกษา 
 		ในช่วง 3 และ 1 ปีที่ผ่านมา ซึ่งอาจเป็นเพราะจำนวนคนที่เข้าศึกษาต่อในระดับอุดมศึกษามีมากขึ้น อาชีวศึกษาเป็นวุฒิการศึกษาที่มีการว่างงานน้อยที่สุดมาโดยตลอด
@@ -727,10 +695,10 @@
 
 <h2>ความสัมพันธ์กับปัจจัยอื่น</h2>
 <div class="select_bar">
-	<a href="#"><div id="var_block_employee" class="selected_var_block" onclick="select_view_relation('employee'); return false;">จำนวนลูกจ้าง</div></a>
-	<a href="#"><div id="var_block_factory" class="var_block" onclick="select_view_relation('factory'); return false;">จำนวนโรงงานอุตสาหกรรม</div></a>
-	<a href="#"><div id="var_block_register" class="var_block" onclick="select_view_relation('register'); return false;">จำนวนการจดทะเบียนนิติบุคคล</div></a>
-	<a href="#"><div id="var_block_gdp" class="var_block" onclick="select_view_relation('gdp'); return false;">ผลิตภัณฑ์มวลรวมในประเทศ (GDP)</div></a>
+	<a href="#"><div id="var_block_employee" style="width: 150px;" class="selected_var_block" onclick="select_view_relation('employee'); return false;">จำนวนลูกจ้าง</div></a>
+	<a href="#"><div id="var_block_factory" style="width: 220px;" class="var_block" onclick="select_view_relation('factory'); return false;">จำนวนโรงงานอุตสาหกรรม</div></a>
+	<a href="#"><div id="var_block_register" style="width: 250px;" class="var_block" onclick="select_view_relation('register'); return false;">จำนวนการจดทะเบียนนิติบุคคล</div></a>
+	<a href="#"><div id="var_block_gdp" style="width: 265px;" class="var_block" onclick="select_view_relation('gdp'); return false;">ผลิตภัณฑ์มวลรวมในประเทศ</div></a>
 </div>
 <div class="content_block">
 	<div class="inlined_box">
@@ -747,9 +715,10 @@
 	</div>
 </div>
 
-<h2>Timeline จำนวนผู้มีงานทำ และเหตุการณ์สำคัญ</h2>
+<h2>Timeline จำนวนผู้มีงานทำและเหตุการณ์สำคัญ</h2>
 <div class="content_block">
-	<div id="unemploy_timeplot" style="height: 180px;"> </div>
+	<div class="inlined_box" style="margin-bottom: 0px;">จำนวนผู้มีงานทำตั้งแต่ปี 2004 ถึงปี 2012 (หน่วยเป็นล้านคน)</div>
+	<div id="unemploy_timeplot" style="height: 200px;"> </div>
 </div>
 
 <h2>รายละเอียดของแต่ละปี</h2>
@@ -769,7 +738,7 @@
 	</div>
 	<div class="inlined_box" style="width: 16px;"> </div>
 	<div class="inlined_box">
-		เปรียบเทียบเปอร์เซ็นต์การว่างงานของแต่ละวุฒิการศึกษา<div id="unemploy_degree"> </div>
+		เปอร์เซ็นต์การว่างงานแต่ละวุฒิการศึกษา<div id="unemploy_degree"> </div>
 	</div>
 	<div class="comment_block">** ปี 2010 บางจังหวัดไม่มีข้อมูล เนื่องจากไม่ได้ทำการสำรวจ</div>
 </div>

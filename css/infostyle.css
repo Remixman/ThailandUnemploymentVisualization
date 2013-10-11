@@ -4,8 +4,8 @@
 }
 
 @font-face {
-	font-family: wdbangna;
-	src: url(../font/wdbangna.ttf);
+	font-family: EucrosiaUPC;
+	src: url(../font/EucrosiaUPC.ttf);
 }
 
 body {
@@ -14,17 +14,18 @@ body {
 	border: 0px 0px 0px 0px;
 	padding: 0px 0px 0px 0px;
 	color: #ffffff;
-	font-family: kruengprung;
+	font-family: EucrosiaUPC;
 }
 
 h2 {
 	background: #eb6750;
-	width: 400px;
-	height: 30px;
-	font-size: 180%;
+	width: 470px;
+	height: 42px;
+	font-size: 200%;
 	margin: 20px 20px 5px 20px;
-	padding: 10px;
-	font-weight: 800;
+	padding-left: 12px;
+	padding-top: 5px;
+	font-weight: 700;
 	vertical-align: middle;
 }
 
@@ -50,7 +51,7 @@ a:hover {
 	height: 200px;
 	margin: 0px auto;
 	background: url(../img/header_img.png) 0px 13px no-repeat;
-	/*padding: 80px 350px 0px 0px;*/
+	font-family: kruengprung;
 	font-size: 550%;
 	font-weight: 900;
 }
@@ -76,45 +77,45 @@ a:hover {
 }
 
 .reference_block {
-	font-family: wdbangna;
-	font-size: 70%;
+	font-family: EucrosiaUPC;
+	font-size: 120%;
 	width: 880px;
 	margin: 5px auto;
 	padding: 2px;
 }
 
 .text_block {
-	font-family: wdbangna;
+	font-family: EucrosiaUPC;
+	font-size: 140%;
 	margin: 0px;
 }
 
 .inlined_box {
 	display: inline-block;
-	font-size: 180%;
+	font-size: 170%;
 	font-weight: 500;
 	margin-top: 5px;
 	margin-bottom: 25px;
 }
 
 .overall_trend {
-	width: 280px; 
+	width: 279px; 
 	height: 180px;
 }
 
 .sex_trend {
-	width: 428px; 
+	width: 427px; 
 	height: 200px;
 }
 
 .degree_trend {
-	width: 428px; 
+	width: 650px; 
 	height: 300px;
 }
 
 .var_block {
 	background: #4b8cc4;
 	display: inline-block;
-	width: 223px;
 	height: 40px;
 	margin: 0px;
 	padding: 0px;
@@ -124,14 +125,13 @@ a:hover {
 	border-right: 1px;
 	border-style:solid;
 	border-color: #ffffff;
-	font-size: 180%;
+	font-size: 160%;
 	text-align: center;
 }
 
 .selected_var_block {
 	background: #53afbe;
 	display: inline-block;
-	width: 223px;
 	height: 40px;
 	margin: 0px;
 	padding: 0px;
@@ -141,15 +141,15 @@ a:hover {
 	border-right: 1px;
 	border-style:solid;
 	border-color: #ffffff;
-	font-size: 180%;
-	font-weight: 800;
+	font-size: 160%;
+	font-weight: 700;
 	text-align: center;
 }
 
 .year_block {
 	background: #4b8cc4;
 	display: inline-block;
-	width: 109px;
+	width: 108px;
 	height: 40px;
 	margin: 0px;
 	padding: 0px;
@@ -159,14 +159,14 @@ a:hover {
 	border-right: 1px;
 	border-style:solid;
 	border-color: #ffffff;
-	font-size: 180%;
+	font-size: 160%;
 	text-align: center;
 }
 
 .selected_year_block {
 	background: #53afbe;
 	display: inline-block;
-	width: 109px;
+	width: 108px;
 	height: 40px;
 	margin: 0px;
 	padding: 0px;
@@ -176,29 +176,31 @@ a:hover {
 	border-right: 1px;
 	border-style:solid;
 	border-color: #ffffff;
-	font-size: 180%;
+	font-size: 160%;
 	font-weight: 800;
 	text-align: center;
 }
 
-.timeplot-grid-label {
-	font-family: wdbangna;
+.timeplot-container .timeplot-grid-label {
+	/*font-family: EucrosiaUPC;*/
 	color: #ffffff;
-	font-size: 200%;
+	font-size: 90%;
 }
 
 .comment_block {
-	font-family: wdbangna;
-	font-size: 85%;
+	font-family: EucrosiaUPC;
+	font-size: 120%;
 }
 
 #unemploy_timeplot {
-	font-family: wdbangna;
+	font-family: EucrosiaUPC;
+	font-size: 150%;
 	color: #000000;
 }
 
 .simileAjax-bubble-container {
-	font-family: wdbangna;
+	font-family: EucrosiaUPC;
+	font-size: 150%;
 	color: #000000;
 }
 
