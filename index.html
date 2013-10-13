@@ -205,7 +205,7 @@
 		chart.draw(data, options);
 	}
 	
-	function drawUnemployedByDegreeChart(year, div_id) {
+	function drawUnemployedByDegreeChart(year) {
 		var unemploy_data = {};
 		unemploy_data['2548'] = new Array(38.7, 21.9, 11.4, 4.6, 7.9, 15.5);
 		unemploy_data['2549'] = new Array(36.6, 21.6, 13.1, 4.3, 6.2, 18.2);
@@ -233,32 +233,26 @@
 			legend: {
 				position: 'top'
 			},
-			//vAxis: {title: 'Year',  titleTextStyle: {color: 'red'}}
 			colors: ['#eb6750'],
 			legend: {
 				position: 'none',
 			},
 			hAxis: {
-				title: 'เปอร์เซ็นต์ (%)',
-				ticks: [0, 5, 10, 15, 20, 25, 30],
-				gridlines: {
-					count: 5
-				}
+				title: 'วุฒิการศึกษาสูงสุด',
+				slantedText: true
 			},
 			vAxis: {
-				title: 'วุฒิการศึกษาสูงสุด'
-			}
+				title: 'เปอร์เซ็นต์ (%)',
+				ticks: [0, 5, 10, 15, 20, 25, 30, 35, 40],
+			},
+			chartArea: { 
+        		top: 35,
+        		width: 260,
+        		height: 285
+        	}
         };
         
-
-        options.vAxis.ticks = [0, 5, 10, 15, 20, 25, 30, 35, 40];
-        options.hAxis.slantedText = true;
-        options.chartArea = { 
-        	top: 35,
-        	width: 260,
-        	height: 285
-        };
-        var chart = new google.visualization.ColumnChart(document.getElementById(div_id));
+        var chart = new google.visualization.ColumnChart(document.getElementById('unemploy_degree'));
         chart.draw(data, options);
 	}
 	
@@ -508,7 +502,7 @@
 		
 		// By year
 		drawUnemployedMap('2555');
-		drawUnemployedByDegreeChart('2555', 'unemploy_degree');
+		drawUnemployedByDegreeChart('2555');
 	}
 	
 	/* Simile Timeplot function */
@@ -587,7 +581,7 @@
 	
 	function select_view_year(year) {
 		drawUnemployedMap(year);
-		drawUnemployedByDegreeChart(year, 'unemploy_degree');
+		drawUnemployedByDegreeChart(year);
 		
 		// TODO: replace with loop
 		document.getElementById('year_block_2548').className = 'year_block';
